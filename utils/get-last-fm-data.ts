@@ -1,6 +1,7 @@
 import axios from "axios";
 import { escapeForbiddenCharacters } from "./escape-forbidden-characters";
 import { LASTFM_API_BASE_URL, LASTFM_API_COMMON_PARAMS } from "@/constants";
+import { SVG_CONFIG } from "@/constants";
 import {
   Image,
   TopArtistsAPIResponse,
@@ -19,7 +20,10 @@ export const getLastFmData = async (): Promise<LastFmData> => {
       ),
     ]);
 
-  const topWeeklyArtists = topArtistsData.topartists.artist.slice(0, 5);
+  const topWeeklyArtists = topArtistsData.topartists.artist.slice(
+    0,
+    SVG_CONFIG.lastfm.top_artists_amount
+  );
 
   const lastTrack = recentTracksData.recenttracks.track[0];
 

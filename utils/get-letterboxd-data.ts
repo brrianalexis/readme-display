@@ -1,6 +1,7 @@
 import axios from "axios";
 import Parser from "rss-parser";
 import { LetterboxdEntry } from "@/types";
+import { SVG_CONFIG } from "@/constants";
 
 const parser = new Parser();
 
@@ -10,25 +11,27 @@ export const getLetterboxdData = async (): Promise<LetterboxdEntry[]> => {
   );
 
   const entries = await Promise.all(
-    feed.items.slice(0, 3).map(async (item) => {
-      const imageUrl = item.content?.match(/<img src="([^"]+)"/)?.[1];
-      let encodedImage = "";
+    feed.items
+      .slice(0, SVG_CONFIG.letterboxd.entries_amount)
+      .map(async (item) => {
+        const imageUrl = item.content?.match(/<img src="([^"]+)"/)?.[1];
+        let encodedImage = "";
 
-      if (imageUrl) {
-        const image = await axios.get(imageUrl, {
-          responseType: "arraybuffer",
-        });
-        const raw = Buffer.from(image.data).toString("base64");
-        encodedImage = `data:${image.headers["content-type"]};base64,${raw}`;
-      }
+        if (imageUrl) {
+          const image = await axios.get(imageUrl, {
+            responseType: "arraybuffer",
+          });
+          const raw = Buffer.from(image.data).toString("base64");
+          encodedImage = `data:${image.headers["content-type"]};base64,${raw}`;
+        }
 
-      return {
-        title: item.title,
-        link: item.link,
-        pubDate: item.pubDate,
-        image: encodedImage,
-      } as LetterboxdEntry;
-    })
+        return {
+          title: item.title,
+          link: item.link,
+          pubDate: item.pubDate,
+          image: encodedImage,
+        } as LetterboxdEntry;
+      })
   );
 
   return entries;
