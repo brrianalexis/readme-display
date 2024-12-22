@@ -1,3 +1,3 @@
 export * from "./api";
-export * from "./svg-config";
+export * from "./svg";
 export * from "./utils";

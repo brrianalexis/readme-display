@@ -1,18 +1,16 @@
 import axios from "axios";
 import Parser from "rss-parser";
+import { API_CONFIG } from "@/constants";
 import { LetterboxdEntry } from "@/types";
-import { SVG_CONFIG } from "@/constants";
 
 const parser = new Parser();
 
 export const getLetterboxdData = async (): Promise<LetterboxdEntry[]> => {
-  const feed = await parser.parseURL(
-    `https://letterboxd.com/${process.env.LETTERBOXD_USERNAME}/rss/`
-  );
+  const feed = await parser.parseURL(API_CONFIG.letterboxd.baseUrl);
 
   const entries = await Promise.all(
     feed.items
-      .slice(0, SVG_CONFIG.letterboxd.entries_amount)
+      .slice(0, API_CONFIG.letterboxd.params.limit)
       .map(async (item) => {
         const imageUrl = item.content?.match(/<img src="([^"]+)"/)?.[1];
         let encodedImage = "";

@@ -16,4 +16,4 @@ export const SVG_CONFIG = {
     height: 250,
     entries_amount: 3,
   },
-};
+} as const;

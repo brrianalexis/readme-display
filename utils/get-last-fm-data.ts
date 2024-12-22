@@ -1,7 +1,6 @@
 import axios from "axios";
 import { escapeForbiddenCharacters } from "./escape-forbidden-characters";
-import { LASTFM_API_BASE_URL, LASTFM_API_COMMON_PARAMS } from "@/constants";
-import { SVG_CONFIG } from "@/constants";
+import { API_CONFIG, getLastFmParams } from "@/constants";
 import {
   Image,
   TopArtistsAPIResponse,
@@ -13,16 +12,20 @@ export const getLastFmData = async (): Promise<LastFmData> => {
   const [{ data: recentTracksData }, { data: topArtistsData }] =
     await Promise.all([
       axios.get<RecentTracksAPIResponse>(
-        `${LASTFM_API_BASE_URL}?method=user.getRecentTracks&${LASTFM_API_COMMON_PARAMS}`
+        `${API_CONFIG.lastfm.baseUrl}?${getLastFmParams("getRecentTracks")}`
       ),
       axios.get<TopArtistsAPIResponse>(
-        `${LASTFM_API_BASE_URL}?method=user.getTopArtists&period=7day&limit=5&${LASTFM_API_COMMON_PARAMS}`
+        `${API_CONFIG.lastfm.baseUrl}?${getLastFmParams(
+          "getTopArtists"
+        )}&period=${API_CONFIG.lastfm.params.period}&limit=${
+          API_CONFIG.lastfm.params.limit
+        }`
       ),
     ]);
 
   const topWeeklyArtists = topArtistsData.topartists.artist.slice(
     0,
-    SVG_CONFIG.lastfm.top_artists_amount
+    API_CONFIG.lastfm.params.limit
   );
 
   const lastTrack = recentTracksData.recenttracks.track[0];
