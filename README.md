@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Readme Display
 
-## Getting Started
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-First, run the development server:
+Dynamic widgets to show off your Last.fm and Letterboxd stats in your readme.
 
-```bash
-npm run dev
-# or
-yarn dev
+## Example
+
+![Last.fm](https://readme-display.vercel.app/api/last-fm)
+![Letterboxd](https://readme-display.vercel.app/api/letterboxd)
+
+## What?
+
+A Next.js app that generates SVG images to display:
+
+- Your latest (or current) last.fm scrobbled track
+- Your top 5 last.fm artists for the last 7 days
+- Your last 3 letterboxd diary entries
+
+## Why?
+
+Just because!
+
+## How?
+
+1. Fork this repo
+2. Deploy to Vercel
+3. Set up the environment variables:
+
+```zsh
+LASTFM_USERNAME=your-lastfm-username
+LASTFM_API_KEY=your-lastfm-api-key
+LETTERBOXD_USERNAME=your-letterboxd-username
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Add the widget to your readme:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```markdown
+![Last.fm](https://your-deployment-url.vercel.app/api/last-fm)
+![Letterboxd](https://your-deployment-url.vercel.app/api/letterboxd)
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Development
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Install dependencies
 
-## Learn More
+```
+bun install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Run locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+bun dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Run tests
 
-## Deploy on Vercel
+```
+bun test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MIT
+
+---
+
+Made with ❤️ by [@brrianalexis](https://github.com/brrianalexis)
