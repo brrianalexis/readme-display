@@ -1,6 +1,6 @@
 import axios from "axios";
 import { escapeForbiddenCharacters } from "./escape-forbidden-characters";
-import { API_COMMON_PARAMS } from "@/constants";
+import { LASTFM_API_BASE_URL, LASTFM_API_COMMON_PARAMS } from "@/constants";
 import {
   Image,
   TopArtistsAPIResponse,
@@ -12,10 +12,10 @@ export const getLastFmData = async (): Promise<LastFmData> => {
   const [{ data: recentTracksData }, { data: topArtistsData }] =
     await Promise.all([
       axios.get<RecentTracksAPIResponse>(
-        `${process.env.LASTFM_BASE_URL}/?method=user.getRecentTracks&${API_COMMON_PARAMS}`
+        `${LASTFM_API_BASE_URL}?method=user.getRecentTracks&${LASTFM_API_COMMON_PARAMS}`
       ),
       axios.get<TopArtistsAPIResponse>(
-        `${process.env.LASTFM_BASE_URL}/?method=user.getTopArtists&period=7day&limit=5&${API_COMMON_PARAMS}`
+        `${LASTFM_API_BASE_URL}?method=user.getTopArtists&period=7day&limit=5&${LASTFM_API_COMMON_PARAMS}`
       ),
     ]);
 
