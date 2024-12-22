@@ -2,8 +2,9 @@
   "name": "readme-display",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "tailwindcss -i ./styles/input.css -o ./styles/output.css && next dev",
     "build": "tailwindcss -i ./styles/input.css -o ./styles/output.css && next build",
     "start": "next start",
     "lint": "next lint",
