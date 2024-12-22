@@ -8,10 +8,10 @@ const createSVG = (entries: LetterboxdEntry[], styles: string) => `
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   xmlnsXlink="http://www.w3.org/1999/xlink"
-  width="700"
+  width="600"
   height="250"
 >
-  <foreignObject width="700" height="250">
+  <foreignObject width="600" height="250">
     <div xmlns="http://www.w3.org/1999/xhtml" class="h-full p-2">
       <style>${styles}</style>
       <div class="flex flex-col h-full font-sans">
@@ -32,17 +32,11 @@ const createSVG = (entries: LetterboxdEntry[], styles: string) => `
               return `
                 <div class="flex-1 flex flex-col items-center px-1">
                   <div class="flex items-center">
-                    <a 
-                      href="${entry.link}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img 
-                        src="${entry.image}" 
-                        class="w-full h-20 object-contain rounded-md hover:opacity-80 transition-opacity"
-                        alt="${title}"
-                      />
-                    </a>
+                    <img 
+                      src="${entry.image}" 
+                      class="w-full h-20 object-contain rounded-md hover:opacity-80 transition-opacity"
+                      alt="${title}"
+                    />
                   </div>
                   <div class="h-[60px] flex items-center text-center">
                     <div class="text-sm text-gray-600 dark:text-white line-clamp-2">
