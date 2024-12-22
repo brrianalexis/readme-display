@@ -1,4 +1,4 @@
-import { escapeForbiddenCharacters } from ".";
+import { escapeForbiddenCharacters } from "..";
 import { FORBIDDEN_CHARACTERS_REPLACEMENT_MAP } from "@/constants";
 
 test("should escape all XML forbidden characters", () => {

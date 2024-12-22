@@ -47,3 +47,18 @@ export type ArtistInfoAPIResponse = {
     };
   };
 };
+
+export type LastFmData = {
+  albumTitle: string;
+  artistName: string;
+  trackName: string;
+  encodedTrackImage: string;
+  topWeeklyArtists: Artist[];
+};
+
+export type LetterboxdEntry = {
+  title: string;
+  image: string;
+  link: string;
+  pubDate: string;
+};
