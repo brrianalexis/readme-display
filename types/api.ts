@@ -4,9 +4,9 @@ import {
   ArtistInfoStats,
   TopArtistsAttributes,
 } from "./artist";
-import { Track, TrackAttributes } from "./track";
 import { Image } from "./image";
 import { Tag } from "./tag";
+import { Track, TrackAttributes } from "./track";
 
 export type RecentTracksAPIResponse = {
   recenttracks: {

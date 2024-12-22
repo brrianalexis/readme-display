@@ -1,5 +1,5 @@
-import { LetterboxdEntry } from "@/types";
 import { SVG_CONFIG } from "@/constants";
+import { LetterboxdEntry } from "@/types";
 
 const parseEntryTitle = (title: string): [string, string] => {
   const lastDashIndex = title.lastIndexOf(" - ");

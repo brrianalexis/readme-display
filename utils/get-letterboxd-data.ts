@@ -1,6 +1,8 @@
 import Parser from "rss-parser";
+
 import { API_CONFIG } from "@/constants";
 import { LetterboxdEntry } from "@/types";
+
 import { encodeImage } from "./encode-image";
 
 const parser = new Parser();

@@ -1,14 +1,16 @@
 import axios from "axios";
-import { escapeForbiddenCharacters } from "./escape-forbidden-characters";
+
 import { API_CONFIG, getLastFmParams } from "@/constants";
 import {
   Image,
-  TopArtistsAPIResponse,
-  RecentTracksAPIResponse,
-  LastFmData,
   ImageSize,
+  LastFmData,
+  RecentTracksAPIResponse,
+  TopArtistsAPIResponse,
 } from "@/types";
+
 import { encodeImage } from "./encode-image";
+import { escapeForbiddenCharacters } from "./escape-forbidden-characters";
 
 const getLastFmImage = async (
   images: Image[],

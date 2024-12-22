@@ -1,5 +1,5 @@
-import { Artist, LastFmData } from "@/types";
 import { SVG_CONFIG } from "@/constants";
+import { Artist, LastFmData } from "@/types";
 
 const createSoundBars = () =>
   Array.from({ length: SVG_CONFIG.lastfm.animation.bars.count })
