@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Dynamic widgets to show off your Last.fm and Letterboxd stats in your readme.
+Dynamic widgets to show off your Last.fm and Letterboxd stats in your readme. Inspired by [novatorem](https://github.com/novatorem/novatorem).
 
 ## Example
 
