@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Dynamic widgets to show off your Last.fm and Letterboxd stats in your readme. Inspired by [novatorem](https://github.com/novatorem/novatorem).
+Dynamic widgets to show off your Last.fm and Letterboxd stats in your readme. Inspired by [novatorem](https://github.com/novatorem/novatorem)
 
 ## Example
 
@@ -13,9 +13,9 @@ Dynamic widgets to show off your Last.fm and Letterboxd stats in your readme. In
 
 A Next.js app that generates SVG images to display:
 
-- Your latest (or current) last.fm scrobbled track
-- Your top 5 last.fm artists for the last 7 days
-- Your last 3 letterboxd diary entries
+- Your latest (or current) Last.fm scrobbled track
+- Your top 5 Last.fm artists for the last 7 days
+- Your last 3 Letterboxd diary entries
 
 ## Why?
 
@@ -33,7 +33,7 @@ LASTFM_API_KEY=your-lastfm-api-key
 LETTERBOXD_USERNAME=your-letterboxd-username
 ```
 
-4. Add the widget to your readme:
+4. Add the widgets you want to your readme:
 
 ```markdown
 ![Last.fm](https://your-deployment-url.vercel.app/api/last-fm)
