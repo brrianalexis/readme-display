@@ -6,7 +6,22 @@ import {
   TopArtistsAPIResponse,
   RecentTracksAPIResponse,
   LastFmData,
+  ImageSize,
 } from "@/types";
+import { encodeImage } from "./encode-image";
+
+const getLastFmImage = async (
+  images: Image[],
+  size: ImageSize = "extralarge"
+): Promise<string> => {
+  const image = images.find((img) => img.size === size);
+
+  if (!image || !image["#text"]) {
+    return "";
+  }
+
+  return encodeImage(image["#text"]);
+};
 
 export const getLastFmData = async (): Promise<LastFmData> => {
   const [{ data: recentTracksData }, { data: topArtistsData }] =
@@ -27,26 +42,14 @@ export const getLastFmData = async (): Promise<LastFmData> => {
     0,
     API_CONFIG.lastfm.params.limit
   );
-
   const lastTrack = recentTracksData.recenttracks.track[0];
 
-  const xlImage = (
-    lastTrack.image.find((image) => image.size === "extralarge") as Image
-  )["#text"];
-
-  const image = await axios.get(xlImage, { responseType: "arraybuffer" });
-
-  const raw = Buffer.from(image.data).toString("base64");
-  const encodedTrackImage = `data:${image.headers["content-type"]};base64,${raw}`;
-
-  const albumTitle = escapeForbiddenCharacters(lastTrack.album["#text"]);
-  const artistName = escapeForbiddenCharacters(lastTrack.artist["#text"]);
-  const trackName = escapeForbiddenCharacters(lastTrack.name);
+  const encodedTrackImage = await getLastFmImage(lastTrack.image);
 
   return {
-    albumTitle,
-    artistName,
-    trackName,
+    albumTitle: escapeForbiddenCharacters(lastTrack.album["#text"]),
+    artistName: escapeForbiddenCharacters(lastTrack.artist["#text"]),
+    trackName: escapeForbiddenCharacters(lastTrack.name),
     encodedTrackImage,
     topWeeklyArtists,
   };

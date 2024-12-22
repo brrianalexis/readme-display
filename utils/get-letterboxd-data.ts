@@ -1,7 +1,7 @@
-import axios from "axios";
 import Parser from "rss-parser";
 import { API_CONFIG } from "@/constants";
 import { LetterboxdEntry } from "@/types";
+import { encodeImage } from "./encode-image";
 
 const parser = new Parser();
 
@@ -12,16 +12,8 @@ export const getLetterboxdData = async (): Promise<LetterboxdEntry[]> => {
     feed.items
       .slice(0, API_CONFIG.letterboxd.params.limit)
       .map(async (item) => {
-        const imageUrl = item.content?.match(/<img src="([^"]+)"/)?.[1];
-        let encodedImage = "";
-
-        if (imageUrl) {
-          const image = await axios.get(imageUrl, {
-            responseType: "arraybuffer",
-          });
-          const raw = Buffer.from(image.data).toString("base64");
-          encodedImage = `data:${image.headers["content-type"]};base64,${raw}`;
-        }
+        const imageUrl = item.content?.match(/<img src="([^"]+)"/)?.[1] || "";
+        const encodedImage = await encodeImage(imageUrl);
 
         return {
           title: item.title,
