@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#bars {
+  height: 30px;
+  position: relative;
+  width: 40px;
+}
+
+.bar {
+  background: #1db954cc;
+  bottom: 1px;
+  height: 3px;
+  position: absolute;
+  width: 3px;
+  animation: sound 0ms -800ms linear infinite alternate;
+}
+
+@keyframes sound {
+  0% {
+    opacity: 0.35;
+    height: 3px;
+  }
+  100% {
+    opacity: 1;
+    height: 15px;
+  }
+}
