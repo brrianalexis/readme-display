@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { theme = "brutal" } = req.query;
+    const { theme = "minimal" } = req.query;
     const styles = await getStyles();
     const data = await getLastFmData();
     const svgContent = createLastFmSVG(data, styles, theme as string);

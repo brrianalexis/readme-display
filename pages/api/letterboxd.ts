@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { theme = "brutal" } = req.query;
+    const { theme = "minimal" } = req.query;
     const styles = await getStyles();
     const entries = await getLetterboxdData();
     const svgContent = createLetterboxdSVG(entries, styles, theme as string);
