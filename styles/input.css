@@ -3,27 +3,21 @@
 @tailwind utilities;
 
 #bars {
-  height: 30px;
-  position: relative;
-  width: 40px;
+  @apply relative h-5 w-10;
 }
 
 .bar {
-  background: #1db954cc;
-  bottom: 1px;
-  height: 3px;
-  position: absolute;
-  width: 3px;
+  @apply absolute bottom-[1px] h-[3px] w-[2px];
   animation: sound 0ms -800ms linear infinite alternate;
 }
 
 @keyframes sound {
   0% {
-    opacity: 0.35;
+    @apply opacity-35;
     height: 3px;
   }
   100% {
-    opacity: 1;
-    height: 15px;
+    @apply opacity-100;
+    height: 12px;
   }
 }

@@ -1,62 +1,88 @@
 import { SVG_CONFIG } from "@/constants";
 import { Artist, LastFmData } from "@/types";
+import { getTheme } from "@/utils/themes";
 
-const createSoundBars = () =>
-  Array.from({ length: SVG_CONFIG.lastfm.animation.bars.count })
-    .map(() => `<div class="bar"></div>`)
+const createSoundBars = (theme_name: string) => {
+  const theme = getTheme(theme_name).lastfm;
+
+  return Array.from({ length: SVG_CONFIG.lastfm.animation.bars.count })
+    .map(() => `<div class="bar ${theme.now_playing.bars}"></div>`)
     .join("");
+};
 
-const createNowPlaying = (props: LastFmData) => /*html*/ `
-  <div class="flex flex-col">
-    <div class="text-2xl text-gray-600 dark:text-white mb-2">
-      🎧 Last seen vibing to:
-    </div>
-    <div class="flex items-center gap-4">
-      <a class="w-[100px]" href="" target="_blank">
-        <img
-          src="${props.encodedTrackImage}"
-          class="w-[100px] h-[100px] rounded-md"
-          alt="${props.albumTitle} by ${props.artistName} album cover"
-        />
-      </a>
-      <div class="flex-1 relative">
-        <div class="text-2xl mb-1 text-gray-600 dark:text-white truncate">
-          ${props.trackName}
+const createNowPlaying = (props: LastFmData, theme_name: string) => {
+  const theme = getTheme(theme_name).lastfm;
+
+  return `
+    <div class="flex flex-col ${theme.container.background} ${
+    theme.container.border
+  } ${theme.container.shadow} rounded-lg p-4">
+      <div class="text-xl font-extrabold tracking-tight ${
+        theme.title.text
+      } mb-2">
+        🎧 Last seen vibing to:
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-[80px]">
+          <img src="${props.encodedTrackImage}" class="w-[80px] h-[80px] ${
+    theme.now_playing.image.border
+  }" alt="${props.albumTitle} by ${props.artistName} album cover" />
         </div>
-        <div class="text-xl text-gray-400">
-          ${props.artistName}
-        </div>
-        <div id="bars" class="my-1 relative w-10 h-[30px]">
-          ${createSoundBars()}
+        <div class="flex-1">
+          <div class="text-lg font-extrabold tracking-tight ${
+            theme.now_playing.track.text
+          } truncate">
+            ${props.trackName}
+          </div>
+          <div class="text-base ${theme.now_playing.artist.text}">
+            ${props.artistName}
+          </div>
+          <div id="bars" class="my-1 relative w-10 h-[20px]">
+            ${createSoundBars(theme_name)}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-`;
+  `;
+};
 
-const createWeeklyArtists = (artists: Artist[]) => /*html*/ `
-  <div class="pt-2 border-t border-gray-200 dark:border-gray-700">
-    <div class="text-2xl text-gray-600 dark:text-white">
-      🎵 On repeat lately:
-    </div>  
-    ${artists
-      .map((artist, index) => {
-        const rank = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"][index];
-        return `
-          <div class="flex items-center py-2 border-b border-gray-200 dark:border-gray-700 gap-3">
-            <div class="text-xl min-w-[32px] text-center">${rank}</div>
-            <div class="flex justify-between items-center flex-1">
-              <div class="text-gray-600 dark:text-white">${artist.name}</div>
-              <div class="text-sm text-gray-400">${artist.playcount} plays</div>
-            </div>
-          </div>
-        `;
-      })
-      .join("")}
-  </div>
-`;
+const createWeeklyArtists = (artists: Artist[], theme_name: string) => {
+  const theme = getTheme(theme_name).lastfm;
 
-export const createLastFmSVG = (props: LastFmData, styles: string) => `
+  return `
+    <div class="flex flex-col ${theme.container.background} ${
+    theme.container.border
+  } ${theme.container.shadow} rounded-lg p-4">
+      <div class="text-xl font-extrabold tracking-tight ${
+        theme.title.text
+      } mb-2">
+        🎵 On repeat lately:
+      </div>  
+      <div class="flex flex-col gap-2">
+        ${artists
+          .map((artist, index) => {
+            const rank = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"][index];
+            return `
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <div class="text-base min-w-[24px] text-center ${theme.top_artists.rank.text}">${rank}</div>
+                  <div class="font-bold ${theme.top_artists.artist.text} text-sm">${artist.name}</div>
+                </div>
+                <div class="text-xs ${theme.top_artists.plays.text}">${artist.playcount} plays</div>
+              </div>
+            `;
+          })
+          .join("")}
+      </div>
+    </div>
+  `;
+};
+
+export const createLastFmSVG = (
+  props: LastFmData,
+  styles: string,
+  theme_name: string = "brutal"
+) => `
 <svg
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
@@ -65,13 +91,13 @@ export const createLastFmSVG = (props: LastFmData, styles: string) => `
   height="${SVG_CONFIG.lastfm.height}"
 >
   <foreignObject width="${SVG_CONFIG.lastfm.width}" height="${
-  SVG_CONFIG.lastfm.height + 20
+  SVG_CONFIG.lastfm.height
 }">
     <div xmlns="http://www.w3.org/1999/xhtml" class="p-2">
       <style>${styles}</style>
       <div class="flex flex-col gap-3 font-sans">
-        ${createNowPlaying(props)}
-        ${createWeeklyArtists(props.topWeeklyArtists)}
+        ${createNowPlaying(props, theme_name)}
+        ${createWeeklyArtists(props.topWeeklyArtists, theme_name)}
       </div>
     </div>
   </foreignObject>

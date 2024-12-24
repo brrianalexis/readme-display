@@ -3,13 +3,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { createLetterboxdSVG, getLetterboxdData, getStyles } from "@/utils";
 
 export default async function handler(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
+    const { theme = "brutal" } = req.query;
     const styles = await getStyles();
     const entries = await getLetterboxdData();
-    const svgContent = createLetterboxdSVG(entries, styles);
+    const svgContent = createLetterboxdSVG(entries, styles, theme as string);
 
     res.setHeader("Content-Type", "image/svg+xml");
     res.send(svgContent);

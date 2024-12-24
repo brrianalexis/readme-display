@@ -3,14 +3,19 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { createLastFmSVG, getLastFmData, getStyles } from "@/utils";
 
 export default async function handler(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const styles = await getStyles();
-  const data = await getLastFmData();
+  try {
+    const { theme = "brutal" } = req.query;
+    const styles = await getStyles();
+    const data = await getLastFmData();
+    const svgContent = createLastFmSVG(data, styles, theme as string);
 
-  const svgContent = createLastFmSVG(data, styles);
-
-  res.setHeader("Content-Type", "image/svg+xml");
-  res.send(svgContent);
+    res.setHeader("Content-Type", "image/svg+xml");
+    res.send(svgContent);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error generating SVG");
+  }
 }
