@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "tailwindcss -i ./styles/input.css -o ./styles/output.css && next dev",
+    "dev": "concurrently \"tailwindcss -i ./styles/input.css -o ./styles/output.css --watch\" \"next dev\"",
     "build": "tailwindcss -i ./styles/input.css -o ./styles/output.css && next build",
     "start": "next start",
     "lint": "eslint .",
@@ -28,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "@typescript-eslint/parser": "^8.18.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "15.1.2",
     "eslint-import-resolver-typescript": "^3.7.0",
