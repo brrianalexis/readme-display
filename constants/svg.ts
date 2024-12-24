@@ -12,7 +12,7 @@ export const SVG_CONFIG = {
     },
   },
   letterboxd: {
-    width: 700,
+    width: 600,
     height: 250,
     entries_amount: 3,
   },

@@ -15,13 +15,11 @@ const createEntryCard = (entry: LetterboxdEntry) => {
   return `
     <div class="flex-1 flex flex-col items-center px-1">
       <div class="flex items-center">
-        <a href="${entry.link}" target="_blank" rel="noopener noreferrer">
-          <img 
-            src="${entry.image}" 
-            class="w-full h-20 object-contain rounded-md hover:opacity-80 transition-opacity"
-            alt="${title}"
-          />
-        </a>
+        <img 
+          src="${entry.image}" 
+          class="w-full h-20 object-contain rounded-md hover:opacity-80 transition-opacity"
+          alt="${title}"
+        />
       </div>
       <div class="h-[60px] flex items-center text-center">
         <div class="text-sm text-gray-600 dark:text-white line-clamp-2">
