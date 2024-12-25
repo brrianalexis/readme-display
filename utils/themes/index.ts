@@ -5,6 +5,7 @@ import { glassTheme } from "./glass";
 import { minimalTheme } from "./minimal";
 import { neonTheme } from "./neon";
 import { retroTheme } from "./retro";
+import { terminalTheme } from "./terminal";
 
 const themes: Record<string, ThemeConfig> = {
   minimal: minimalTheme,
@@ -12,6 +13,7 @@ const themes: Record<string, ThemeConfig> = {
   glass: glassTheme,
   retro: retroTheme,
   neon: neonTheme,
+  terminal: terminalTheme,
 };
 
 export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
