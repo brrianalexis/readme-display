@@ -3,6 +3,7 @@ import { ThemeConfig } from "@/types";
 import { brutalTheme } from "./brutal";
 import { glassTheme } from "./glass";
 import { minimalTheme } from "./minimal";
+import { neonTheme } from "./neon";
 import { retroTheme } from "./retro";
 
 const themes: Record<string, ThemeConfig> = {
@@ -10,6 +11,7 @@ const themes: Record<string, ThemeConfig> = {
   brutal: brutalTheme,
   glass: glassTheme,
   retro: retroTheme,
+  neon: neonTheme,
 };
 
 export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
