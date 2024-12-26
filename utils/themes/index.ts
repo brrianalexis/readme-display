@@ -1,6 +1,7 @@
 import { ThemeConfig } from "@/types";
 
 import { brutalTheme } from "./brutal";
+import { citypopTheme } from "./citypop";
 import { darkwaveTheme } from "./darkwave";
 import { gameboyTheme } from "./gameboy";
 import { glassTheme } from "./glass";
@@ -24,6 +25,7 @@ const themes: Record<string, ThemeConfig> = {
   gameboy: gameboyTheme,
   darkwave: darkwaveTheme,
   postpunk: postpunkTheme,
+  citypop: citypopTheme,
 };
 
 export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
