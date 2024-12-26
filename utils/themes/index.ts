@@ -1,5 +1,6 @@
 import { ThemeConfig } from "@/types";
 
+import { blackmetalTheme } from "./blackmetal";
 import { brutalTheme } from "./brutal";
 import { citypopTheme } from "./citypop";
 import { darkwaveTheme } from "./darkwave";
@@ -28,6 +29,7 @@ const themes: Record<string, ThemeConfig> = {
   postpunk: postpunkTheme,
   citypop: citypopTheme,
   witchhouse: witchhouseTheme,
+  blackmetal: blackmetalTheme,
 };
 
 export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
