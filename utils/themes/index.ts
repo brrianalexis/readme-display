@@ -10,6 +10,7 @@ import { minimalTheme } from "./minimal";
 import { neonTheme } from "./neon";
 import { postpunkTheme } from "./postpunk";
 import { retroTheme } from "./retro";
+import { sunbatherTheme } from "./sunbather";
 import { synthwaveTheme } from "./synthwave";
 import { terminalTheme } from "./terminal";
 import { vaporwaveTheme } from "./vaporwave";
@@ -30,6 +31,7 @@ const themes: Record<string, ThemeConfig> = {
   citypop: citypopTheme,
   witchhouse: witchhouseTheme,
   blackmetal: blackmetalTheme,
+  sunbather: sunbatherTheme,
 };
 
 export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
