@@ -6,6 +6,7 @@ import { gameboyTheme } from "./gameboy";
 import { glassTheme } from "./glass";
 import { minimalTheme } from "./minimal";
 import { neonTheme } from "./neon";
+import { postpunkTheme } from "./post-punk";
 import { retroTheme } from "./retro";
 import { synthwaveTheme } from "./synthwave";
 import { terminalTheme } from "./terminal";
@@ -22,6 +23,7 @@ const themes: Record<string, ThemeConfig> = {
   synthwave: synthwaveTheme,
   gameboy: gameboyTheme,
   darkwave: darkwaveTheme,
+  postpunk: postpunkTheme,
 };
 
 export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
