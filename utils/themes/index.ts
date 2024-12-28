@@ -16,7 +16,7 @@ import { terminalTheme } from "./terminal";
 import { vaporwaveTheme } from "./vaporwave";
 import { witchhouseTheme } from "./witchhouse";
 
-const themes: Record<string, ThemeConfig> = {
+export const themes: Record<string, ThemeConfig> = {
   minimal: minimalTheme,
   brutal: brutalTheme,
   glass: glassTheme,

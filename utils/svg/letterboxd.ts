@@ -60,7 +60,7 @@ export const createLetterboxdSVG = (
   <foreignObject width="${SVG_CONFIG.letterboxd.width}" height="${
     SVG_CONFIG.letterboxd.height
   }">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="h-full p-3">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="h-full p-2">
       <style>${styles}</style>
       <div class="flex flex-col h-[180px] font-sans ${
         theme.container.background

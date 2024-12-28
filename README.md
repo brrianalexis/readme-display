@@ -4,10 +4,19 @@
 
 Dynamic widgets to show off your Last.fm and Letterboxd stats in your readme. Inspired by [novatorem](https://github.com/novatorem/novatorem)
 
-## Example
+## Examples
 
-![Last.fm](https://readme-display.vercel.app/api/last-fm)
-![Letterboxd](https://readme-display.vercel.app/api/letterboxd)
+### Last.fm - Now Playing
+
+![Last.fm](https://readme-display.vercel.app/api/last-fm/now-playing?theme=vaporwave)
+
+### Last.fm - Top Artists
+
+![Last.fm](https://readme-display.vercel.app/api/last-fm/top-artists?theme=vaporwave)
+
+### Letterboxd - Recently watched
+
+![Letterboxd](https://readme-display.vercel.app/api/letterboxd?theme=vaporwave)
 
 ## What?
 
@@ -33,11 +42,30 @@ LASTFM_API_KEY=your-lastfm-api-key
 LETTERBOXD_USERNAME=your-letterboxd-username
 ```
 
-4. Add the widgets you want to your readme:
+4. Choose a theme and add it as a query param to the URL. If no theme is provided, the default theme will be used. The available themes are:
+
+- `blackmetal`
+- `brutal`
+- `citypop`
+- `darkwave`
+- `gameboy`
+- `glass`
+- `minimal` (default)
+- `neon`
+- `postpunk`
+- `retro`
+- `sunbather`
+- `synthwave`
+- `terminal`
+- `vaporwave`
+- `witchhouse`
+
+5. Add the widgets you want to your readme:
 
 ```markdown
-![Last.fm](https://your-deployment-url.vercel.app/api/last-fm)
-![Letterboxd](https://your-deployment-url.vercel.app/api/letterboxd)
+![Last.fm](https://your-deployment-url.vercel.app/api/last-fm/now-playing?theme=brutal)
+![Last.fm](https://your-deployment-url.vercel.app/api/last-fm/top-artists?theme=darkwave)
+![Letterboxd](https://your-deployment-url.vercel.app/api/letterboxd?theme=postpunk)
 ```
 
 ## Development
