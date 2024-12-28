@@ -1,3 +1,23 @@
+export const THEME_NAMES = [
+  "blackmetal",
+  "brutal",
+  "citypop",
+  "darkwave",
+  "gameboy",
+  "glass",
+  "minimal",
+  "neon",
+  "postpunk",
+  "retro",
+  "sunbather",
+  "synthwave",
+  "terminal",
+  "vaporwave",
+  "witchhouse",
+] as const;
+
+export type ThemeName = (typeof THEME_NAMES)[number];
+
 export type BaseThemeConfig = {
   container: {
     background: string;

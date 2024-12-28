@@ -12,7 +12,7 @@ export const createSoundBars = (theme_name: string) => {
     .join("");
 };
 
-const createNowPlaying = (
+export const createNowPlaying = (
   props: LastFmWidgetNowPlaying,
   theme_name: string
 ) => {

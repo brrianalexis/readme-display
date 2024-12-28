@@ -1,8 +1,8 @@
 import { SVG_CONFIG } from "@/constants";
 import { LetterboxdEntry } from "@/types";
-import { getTheme } from "@/utils/themes";
+import { getTheme } from "@/utils";
 
-const parseEntryTitle = (title: string): [string, string] => {
+export const parseEntryTitle = (title: string): [string, string] => {
   const lastDashIndex = title.lastIndexOf(" - ");
 
   if (lastDashIndex === -1) return [title, ""];
@@ -10,7 +10,7 @@ const parseEntryTitle = (title: string): [string, string] => {
   return [title.slice(0, lastDashIndex), title.slice(lastDashIndex + 3)];
 };
 
-const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
+export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
   const [title, rating] = parseEntryTitle(entry.title);
   const theme = getTheme(theme_name).letterboxd;
 

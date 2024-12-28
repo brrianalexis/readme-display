@@ -1,6 +1,6 @@
 export type LastFmWidgetArtist = {
   name: string;
-  playcount: number;
+  playcount: string;
 };
 
 export type LastFmWidgetNowPlaying = {
