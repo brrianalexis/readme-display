@@ -15,7 +15,7 @@ export const CodeSnippet: FC<Props> = ({ children }) => {
 
   return (
     <div className="relative group">
-      <pre className="bg-neutral-800 rounded-lg p-4 text-sm overflow-x-auto">
+      <pre className="bg-neutral-800 text-neutral-200 rounded-lg p-4 text-sm overflow-x-auto">
         <code>{children}</code>
       </pre>
       <div
