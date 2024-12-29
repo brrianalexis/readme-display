@@ -1,7 +1,7 @@
 export const SVG_CONFIG = {
   letterboxd: {
     width: 480,
-    height: 250,
+    height: 220,
     entries_amount: 3,
   },
   lastfm: {
