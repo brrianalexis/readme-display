@@ -4,6 +4,7 @@ import { API_CONFIG } from "@/constants";
 import { LetterboxdEntry } from "@/types";
 
 import { encodeImage } from "./encode-image";
+import { escapeForbiddenCharacters } from ".";
 
 const parser = new Parser();
 
@@ -31,7 +32,7 @@ export const getLetterboxdData = async (): Promise<LetterboxdEntry[]> => {
         const watchedDate = extractWatchedDate(item);
 
         return {
-          title: item.title,
+          title: escapeForbiddenCharacters(item.title || ""),
           link: item.link,
           pubDate: watchedDate,
           image: encodedImage,
