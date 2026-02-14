@@ -51,7 +51,7 @@ export const createLastFmTopArtistsSVG = (
 		SVG_CONFIG.lastfm.top_artists.height
 	}">
     <div xmlns="http://www.w3.org/1999/xhtml" class="p-2">
-      <style>${styles}</style>
+      <style><![CDATA[${styles}]]></style>
       <div class="flex flex-col gap-3 font-sans">
         ${createWeeklyArtists(artists, theme_name)}
       </div>

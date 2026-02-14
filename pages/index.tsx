@@ -44,7 +44,7 @@ export default function Home({ baseUrl }: Props) {
 						<h2 className="text-lg md:text-xl font-semibold text-neutral-800 dark:text-neutral-200">
 							Last.fm Now Playing
 						</h2>
-						<div className="space-y-4 md:space-y-6 bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+						<div className="space-y-4 md:space-y-6 bg-neutral-100 dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
 							<div className="overflow-x-auto">
 								<img
 									src={`${baseUrl}/api/last-fm/now-playing?theme=${selectedTheme}`}
@@ -64,7 +64,7 @@ export default function Home({ baseUrl }: Props) {
 						<h2 className="text-lg md:text-xl font-semibold text-neutral-800 dark:text-neutral-200">
 							Last.fm Top Artists
 						</h2>
-						<div className="space-y-4 md:space-y-6 bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+						<div className="space-y-4 md:space-y-6 bg-neutral-100 dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
 							<div className="overflow-x-auto">
 								<img
 									src={`${baseUrl}/api/last-fm/top-artists?theme=${selectedTheme}`}
@@ -84,7 +84,7 @@ export default function Home({ baseUrl }: Props) {
 						<h2 className="text-lg md:text-xl font-semibold text-neutral-800 dark:text-neutral-200">
 							Letterboxd Recent Movies
 						</h2>
-						<div className="space-y-4 md:space-y-6 bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+						<div className="space-y-4 md:space-y-6 bg-neutral-100 dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
 							<div className="overflow-x-auto">
 								<img
 									src={`${baseUrl}/api/letterboxd?theme=${selectedTheme}`}

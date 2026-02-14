@@ -67,7 +67,7 @@ export const createLastFmNowPlayingSVG = (
 		SVG_CONFIG.lastfm.now_playing.height
 	}">
     <div xmlns="http://www.w3.org/1999/xhtml" class="p-2">
-      <style>${styles}</style>
+      <style><![CDATA[${styles}]]></style>
       <div class="flex flex-col gap-3 font-sans">
         ${createNowPlaying(props, theme_name)}
       </div>

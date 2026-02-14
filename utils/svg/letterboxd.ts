@@ -16,10 +16,10 @@ export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
 
 	return `
     <div class="flex-1 flex flex-col items-center px-2">
-      <div class="w-full">
-        <img 
-          src="${entry.image}" 
-          class="w-full h-16 object-contain ${theme.card.image.border}"
+      <div class="flex justify-center">
+        <img
+          src="${entry.image}"
+          class="h-16 object-contain ${theme.card.image.border}"
           alt="${title}"
         />
       </div>
@@ -61,7 +61,7 @@ export const createLetterboxdSVG = (
 		SVG_CONFIG.letterboxd.height
 	}">
     <div xmlns="http://www.w3.org/1999/xhtml" class="h-full p-2">
-      <style>${styles}</style>
+      <style><![CDATA[${styles}]]></style>
       <div class="flex flex-col h-[180px] font-sans ${
 				theme.container.background
 			} ${theme.container.border} ${theme.container.shadow} rounded-lg p-3">
