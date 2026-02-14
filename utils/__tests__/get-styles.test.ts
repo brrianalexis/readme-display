@@ -3,12 +3,19 @@ import path from "node:path";
 
 import { getStyles } from "../get-styles";
 
-vi.mock("fs/promises");
-vi.mock("path");
+vi.mock("node:fs/promises", () => ({
+	default: {
+		readFile: vi.fn(),
+	},
+}));
 
 describe("getStyles", () => {
 	beforeEach(() => {
-		vi.mocked(path.join).mockReturnValue("/fake/path/output.css");
+		vi.spyOn(path, "join").mockReturnValue("/fake/path/output.css");
+	});
+
+	afterEach(() => {
+		vi.restoreAllMocks();
 	});
 
 	it("should read and append bar animations to CSS", async () => {
