@@ -1,64 +1,64 @@
-import {
-  Artist,
-  ArtistInfoLink,
-  ArtistInfoStats,
-  TopArtistsAttributes,
+import type {
+	Artist,
+	ArtistInfoLink,
+	ArtistInfoStats,
+	TopArtistsAttributes,
 } from "./artist";
-import { Image } from "./image";
-import { Tag } from "./tag";
-import { Track, TrackAttributes } from "./track";
+import type { Image } from "./image";
+import type { Tag } from "./tag";
+import type { Track, TrackAttributes } from "./track";
 
 export type RecentTracksAPIResponse = {
-  recenttracks: {
-    track: Track[];
-    "@attr": TrackAttributes;
-  };
+	recenttracks: {
+		track: Track[];
+		"@attr": TrackAttributes;
+	};
 };
 
 export type TopArtistsAPIResponse = {
-  topartists: {
-    artist: Artist[];
-    "@attr": TopArtistsAttributes;
-  };
+	topartists: {
+		artist: Artist[];
+		"@attr": TopArtistsAttributes;
+	};
 };
 
 export type ArtistInfoAPIResponse = {
-  artist: {
-    name: string;
-    mbid: string;
-    url: string;
-    image: Image[];
-    streamable: string;
-    ontour: string;
-    stats: ArtistInfoStats;
-    similar: {
-      artist: Artist[];
-    };
-    tags: {
-      tag: Tag[];
-    };
-    bio: {
-      links: {
-        link: ArtistInfoLink[];
-      };
-      published: string;
-      summary: string;
-      content: string;
-    };
-  };
+	artist: {
+		name: string;
+		mbid: string;
+		url: string;
+		image: Image[];
+		streamable: string;
+		ontour: string;
+		stats: ArtistInfoStats;
+		similar: {
+			artist: Artist[];
+		};
+		tags: {
+			tag: Tag[];
+		};
+		bio: {
+			links: {
+				link: ArtistInfoLink[];
+			};
+			published: string;
+			summary: string;
+			content: string;
+		};
+	};
 };
 
 export type LastFmData = {
-  albumTitle: string;
-  artistName: string;
-  trackName: string;
-  encodedTrackImage: string;
-  topWeeklyArtists: Artist[];
+	albumTitle: string;
+	artistName: string;
+	trackName: string;
+	encodedTrackImage: string;
+	topWeeklyArtists: Artist[];
 };
 
 export type LetterboxdEntry = {
-  title: string;
-  image: string;
-  link: string;
-  pubDate: string;
+	title: string;
+	image: string;
+	link: string;
+	pubDate: string;
 };

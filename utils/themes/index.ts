@@ -1,4 +1,4 @@
-import { ThemeConfig } from "@/types";
+import type { ThemeConfig } from "@/types";
 
 import { blackmetalTheme } from "./blackmetal";
 import { brutalTheme } from "./brutal";
@@ -17,22 +17,22 @@ import { vaporwaveTheme } from "./vaporwave";
 import { witchhouseTheme } from "./witchhouse";
 
 export const themes: Record<string, ThemeConfig> = {
-  minimal: minimalTheme,
-  brutal: brutalTheme,
-  glass: glassTheme,
-  retro: retroTheme,
-  neon: neonTheme,
-  terminal: terminalTheme,
-  vaporwave: vaporwaveTheme,
-  synthwave: synthwaveTheme,
-  gameboy: gameboyTheme,
-  darkwave: darkwaveTheme,
-  postpunk: postpunkTheme,
-  citypop: citypopTheme,
-  witchhouse: witchhouseTheme,
-  blackmetal: blackmetalTheme,
-  sunbather: sunbatherTheme,
+	minimal: minimalTheme,
+	brutal: brutalTheme,
+	glass: glassTheme,
+	retro: retroTheme,
+	neon: neonTheme,
+	terminal: terminalTheme,
+	vaporwave: vaporwaveTheme,
+	synthwave: synthwaveTheme,
+	gameboy: gameboyTheme,
+	darkwave: darkwaveTheme,
+	postpunk: postpunkTheme,
+	citypop: citypopTheme,
+	witchhouse: witchhouseTheme,
+	blackmetal: blackmetalTheme,
+	sunbather: sunbatherTheme,
 };
 
 export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
-  themes[theme_name] || themes.minimal;
+	themes[theme_name] || themes.minimal;
