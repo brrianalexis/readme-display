@@ -13,6 +13,10 @@ export default async function handler(
 		const svgContent = createLetterboxdSVG(entries, styles, theme as string);
 
 		res.setHeader("Content-Type", "image/svg+xml");
+		res.setHeader(
+			"Cache-Control",
+			"public, s-maxage=1800, stale-while-revalidate=300",
+		);
 		res.send(svgContent);
 	} catch (error) {
 		console.error(error);

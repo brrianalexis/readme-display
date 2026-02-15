@@ -13,6 +13,10 @@ export default async function handler(
 		const svgContent = createLastFmNowPlayingSVG(data, styles, theme as string);
 
 		res.setHeader("Content-Type", "image/svg+xml");
+		res.setHeader(
+			"Cache-Control",
+			"public, s-maxage=60, stale-while-revalidate=30",
+		);
 		res.send(svgContent);
 	} catch (error) {
 		console.error(error);

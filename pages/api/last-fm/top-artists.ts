@@ -17,6 +17,10 @@ export default async function handler(
 		);
 
 		res.setHeader("Content-Type", "image/svg+xml");
+		res.setHeader(
+			"Cache-Control",
+			"public, s-maxage=300, stale-while-revalidate=60",
+		);
 		res.send(svgContent);
 	} catch (error) {
 		console.error(error);
