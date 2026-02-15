@@ -45,7 +45,7 @@ export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
 export const createLetterboxdSVG = (
 	entries: LetterboxdEntry[],
 	styles: string,
-	theme_name: string = "brutal",
+	theme_name: string = "minimal",
 ) => {
 	const theme = getTheme(theme_name).letterboxd;
 
