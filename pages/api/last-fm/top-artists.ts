@@ -6,6 +6,11 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse,
 ) {
+	if (req.method !== "GET") {
+		res.setHeader("Allow", "GET");
+		return res.status(405).end();
+	}
+
 	try {
 		const { theme = "minimal" } = req.query;
 		const styles = await getStyles();
