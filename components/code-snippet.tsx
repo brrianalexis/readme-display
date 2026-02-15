@@ -7,10 +7,14 @@ interface Props {
 export const CodeSnippet: FC<Props> = ({ children }) => {
 	const [copied, setCopied] = useState(false);
 
-	const handleCopyToClipboard = () => {
-		navigator.clipboard.writeText(children);
-		setCopied(true);
-		setTimeout(() => setCopied(false), 2000);
+	const handleCopyToClipboard = async () => {
+		try {
+			await navigator.clipboard.writeText(children);
+			setCopied(true);
+			setTimeout(() => setCopied(false), 2000);
+		} catch {
+			/* clipboard unavailable */
+		}
 	};
 
 	return (
