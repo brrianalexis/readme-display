@@ -2,8 +2,8 @@ import Parser from "rss-parser";
 
 import { API_CONFIG, getLetterboxdUrl } from "@/constants";
 import type { LetterboxdEntry } from "@/types";
-import { escapeForbiddenCharacters } from ".";
 import { encodeImage } from "./encode-image";
+import { escapeForbiddenCharacters } from "./escape-forbidden-characters";
 
 const parser = new Parser();
 
