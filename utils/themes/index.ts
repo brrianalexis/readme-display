@@ -1,4 +1,4 @@
-import type { ThemeConfig } from "@/types";
+import type { ThemeConfig, ThemeName } from "@/types";
 
 import { blackmetalTheme } from "./blackmetal";
 import { brutalTheme } from "./brutal";
@@ -16,7 +16,7 @@ import { terminalTheme } from "./terminal";
 import { vaporwaveTheme } from "./vaporwave";
 import { witchhouseTheme } from "./witchhouse";
 
-export const themes: Record<string, ThemeConfig> = {
+export const themes: Record<ThemeName, ThemeConfig> = {
 	minimal: minimalTheme,
 	brutal: brutalTheme,
 	glass: glassTheme,
@@ -34,5 +34,5 @@ export const themes: Record<string, ThemeConfig> = {
 	sunbather: sunbatherTheme,
 };
 
-export const getTheme = (theme_name: string = "minimal"): ThemeConfig =>
-	themes[theme_name] || themes.minimal;
+export const getTheme = (name: string = "minimal"): ThemeConfig =>
+	themes[name as ThemeName] ?? themes.minimal;
