@@ -1,6 +1,6 @@
 import { HttpResponse, http } from "msw";
 
-import { API_CONFIG } from "@/constants";
+import { getLetterboxdUrl } from "@/constants";
 
 const TEST_IMAGE_URL = "https://test-image.jpg";
 const TEST_IMAGE_BASE64 =
@@ -49,7 +49,7 @@ const lastFmHandlers = [
 ];
 
 const letterboxdHandlers = [
-	http.get(API_CONFIG.letterboxd.baseUrl, () => {
+	http.get(getLetterboxdUrl(), () => {
 		return HttpResponse.xml(`
       <?xml version="1.0" encoding="UTF-8"?>
       <rss version="2.0">

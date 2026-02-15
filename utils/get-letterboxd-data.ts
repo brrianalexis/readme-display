@@ -1,6 +1,6 @@
 import Parser from "rss-parser";
 
-import { API_CONFIG } from "@/constants";
+import { API_CONFIG, getLetterboxdUrl } from "@/constants";
 import type { LetterboxdEntry } from "@/types";
 import { escapeForbiddenCharacters } from ".";
 import { encodeImage } from "./encode-image";
@@ -20,7 +20,7 @@ const extractWatchedDate = (item: Parser.Item): string => {
 };
 
 export const getLetterboxdData = async (): Promise<LetterboxdEntry[]> => {
-	const feed = await parser.parseURL(API_CONFIG.letterboxd.baseUrl);
+	const feed = await parser.parseURL(getLetterboxdUrl());
 
 	const entries = await Promise.all(
 		feed.items

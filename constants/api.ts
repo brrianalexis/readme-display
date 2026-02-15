@@ -12,12 +12,14 @@ export const API_CONFIG = {
 		},
 	},
 	letterboxd: {
-		baseUrl: `https://letterboxd.com/${process.env.LETTERBOXD_USERNAME}/rss/`,
 		params: {
 			limit: 3,
 		},
 	},
 } as const;
+
+export const getLetterboxdUrl = () =>
+	`https://letterboxd.com/${process.env.LETTERBOXD_USERNAME}/rss/`;
 
 export const getLastFmParams = (
 	method: keyof typeof API_CONFIG.lastfm.methods,

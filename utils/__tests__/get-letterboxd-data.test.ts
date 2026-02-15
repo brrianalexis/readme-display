@@ -1,6 +1,6 @@
 import { HttpResponse, http } from "msw";
 
-import { API_CONFIG } from "@/constants";
+import { API_CONFIG, getLetterboxdUrl } from "@/constants";
 import { server } from "@/test/mocks/server";
 
 import { getLetterboxdData } from "../get-letterboxd-data";
@@ -22,7 +22,7 @@ describe("Letterboxd", () => {
 
 	it("should respect the limit parameter", async () => {
 		server.use(
-			http.get(API_CONFIG.letterboxd.baseUrl, () => {
+			http.get(getLetterboxdUrl(), () => {
 				const items = Array.from(
 					{ length: API_CONFIG.letterboxd.params.limit + 2 },
 					(_, i) => `
@@ -52,7 +52,7 @@ describe("Letterboxd", () => {
 
 	it("should handle missing image in description", async () => {
 		server.use(
-			http.get(API_CONFIG.letterboxd.baseUrl, () => {
+			http.get(getLetterboxdUrl(), () => {
 				return HttpResponse.xml(`
           <?xml version="1.0" encoding="UTF-8"?>
           <rss version="2.0">
@@ -77,7 +77,7 @@ describe("Letterboxd", () => {
 
 	it("should handle empty RSS feed", async () => {
 		server.use(
-			http.get(API_CONFIG.letterboxd.baseUrl, () => {
+			http.get(getLetterboxdUrl(), () => {
 				return HttpResponse.xml(`
           <?xml version="1.0" encoding="UTF-8"?>
           <rss version="2.0">
@@ -93,7 +93,7 @@ describe("Letterboxd", () => {
 
 	it("should handle network errors", async () => {
 		server.use(
-			http.get(API_CONFIG.letterboxd.baseUrl, () => {
+			http.get(getLetterboxdUrl(), () => {
 				return HttpResponse.error();
 			}),
 		);
