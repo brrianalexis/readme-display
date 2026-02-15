@@ -21,7 +21,22 @@ export const API_CONFIG = {
 export const getLetterboxdUrl = () =>
 	`https://letterboxd.com/${process.env.LETTERBOXD_USERNAME}/rss/`;
 
-export const getLastFmParams = (
+export const getLastFmUrl = (
 	method: keyof typeof API_CONFIG.lastfm.methods,
-) =>
-	`method=${API_CONFIG.lastfm.methods[method]}&user=${process.env.LASTFM_USERNAME}&api_key=${process.env.LASTFM_API_KEY}&format=${API_CONFIG.lastfm.params.format}`;
+	extra?: Record<string, string | number>,
+) => {
+	const params = new URLSearchParams({
+		method: API_CONFIG.lastfm.methods[method],
+		user: process.env.LASTFM_USERNAME ?? "",
+		api_key: process.env.LASTFM_API_KEY ?? "",
+		format: API_CONFIG.lastfm.params.format,
+	});
+
+	if (extra) {
+		for (const [key, value] of Object.entries(extra)) {
+			params.set(key, String(value));
+		}
+	}
+
+	return `${API_CONFIG.lastfm.baseUrl}?${params}`;
+};

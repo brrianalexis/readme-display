@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { API_CONFIG, getLastFmParams } from "@/constants";
+import { API_CONFIG, getLastFmUrl } from "@/constants";
 import type {
 	Artist,
 	Image,
@@ -28,11 +28,10 @@ const getLastFmImage = async (
 
 export const getTopArtists = async (): Promise<Artist[]> => {
 	const { data } = await axios.get<TopArtistsAPIResponse>(
-		`${API_CONFIG.lastfm.baseUrl}?${getLastFmParams(
-			"getTopArtists",
-		)}&period=${API_CONFIG.lastfm.params.period}&limit=${
-			API_CONFIG.lastfm.params.limit
-		}`,
+		getLastFmUrl("getTopArtists", {
+			period: API_CONFIG.lastfm.params.period,
+			limit: API_CONFIG.lastfm.params.limit,
+		}),
 	);
 
 	return data.topartists.artist.slice(0, API_CONFIG.lastfm.params.limit);
@@ -40,9 +39,7 @@ export const getTopArtists = async (): Promise<Artist[]> => {
 
 export const getLastFmData = async (): Promise<LastFmData> => {
 	const [{ data: recentTracksData }, topWeeklyArtists] = await Promise.all([
-		axios.get<RecentTracksAPIResponse>(
-			`${API_CONFIG.lastfm.baseUrl}?${getLastFmParams("getRecentTracks")}`,
-		),
+		axios.get<RecentTracksAPIResponse>(getLastFmUrl("getRecentTracks")),
 		getTopArtists(),
 	]);
 
