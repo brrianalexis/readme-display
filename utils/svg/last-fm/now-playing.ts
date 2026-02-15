@@ -59,7 +59,6 @@ export const createLastFmNowPlayingSVG = (
 <svg
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
-  xmlnsXlink="http://www.w3.org/1999/xlink"
   width="${SVG_CONFIG.lastfm.now_playing.width}"
   height="${SVG_CONFIG.lastfm.now_playing.height}"
 >

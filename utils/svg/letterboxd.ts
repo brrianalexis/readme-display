@@ -53,7 +53,6 @@ export const createLetterboxdSVG = (
 <svg
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
-  xmlnsXlink="http://www.w3.org/1999/xlink"
   width="${SVG_CONFIG.letterboxd.width}"
   height="${SVG_CONFIG.letterboxd.height}"
 >
