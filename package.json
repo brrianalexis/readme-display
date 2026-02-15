@@ -8,6 +8,7 @@
 		"build": "bunx @tailwindcss/cli -i ./styles/input.css -o ./styles/output.css && next build",
 		"start": "next start",
 		"check": "biome check --write",
+		"lint": "biome check",
 		"test": "vitest --reporter verbose",
 		"test:watch": "vitest --reporter verbose --watch"
 	},
