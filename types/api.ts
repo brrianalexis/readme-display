@@ -1,11 +1,4 @@
-import type {
-	Artist,
-	ArtistInfoLink,
-	ArtistInfoStats,
-	TopArtistsAttributes,
-} from "./artist";
-import type { Image } from "./image";
-import type { Tag } from "./tag";
+import type { Artist } from "./artist";
 import type { Track, TrackAttributes } from "./track";
 
 export type RecentTracksAPIResponse = {
@@ -18,34 +11,14 @@ export type RecentTracksAPIResponse = {
 export type TopArtistsAPIResponse = {
 	topartists: {
 		artist: Artist[];
-		"@attr": TopArtistsAttributes;
 	};
 };
 
-export type ArtistInfoAPIResponse = {
-	artist: {
-		name: string;
-		mbid: string;
-		url: string;
-		image: Image[];
-		streamable: string;
-		ontour: string;
-		stats: ArtistInfoStats;
-		similar: {
-			artist: Artist[];
-		};
-		tags: {
-			tag: Tag[];
-		};
-		bio: {
-			links: {
-				link: ArtistInfoLink[];
-			};
-			published: string;
-			summary: string;
-			content: string;
-		};
-	};
+export type LastFmWidgetNowPlaying = {
+	trackName: string;
+	artistName: string;
+	albumTitle: string;
+	encodedTrackImage: string;
 };
 
 export type LastFmData = {
