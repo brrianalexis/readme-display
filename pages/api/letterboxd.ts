@@ -12,10 +12,12 @@ export default async function handler(
 	}
 
 	try {
-		const { theme = "minimal" } = req.query;
+		const theme = Array.isArray(req.query.theme)
+			? req.query.theme[0]
+			: (req.query.theme ?? "minimal");
 		const styles = await getStyles();
 		const entries = await getLetterboxdData();
-		const svgContent = createLetterboxdSVG(entries, styles, theme as string);
+		const svgContent = createLetterboxdSVG(entries, styles, theme);
 
 		res.setHeader("Content-Type", "image/svg+xml");
 		res.setHeader(
