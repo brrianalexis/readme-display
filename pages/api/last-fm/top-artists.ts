@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { createLastFmTopArtistsSVG, getLastFmData, getStyles } from "@/utils";
+import { createLastFmTopArtistsSVG, getStyles, getTopArtists } from "@/utils";
 
 export default async function handler(
 	req: NextApiRequest,
@@ -15,13 +15,11 @@ export default async function handler(
 		const theme = Array.isArray(req.query.theme)
 			? req.query.theme[0]
 			: (req.query.theme ?? "minimal");
-		const styles = await getStyles();
-		const data = await getLastFmData();
-		const svgContent = createLastFmTopArtistsSVG(
-			data.topWeeklyArtists,
-			styles,
-			theme,
-		);
+		const [styles, topArtists] = await Promise.all([
+			getStyles(),
+			getTopArtists(),
+		]);
+		const svgContent = createLastFmTopArtistsSVG(topArtists, styles, theme);
 
 		res.setHeader("Content-Type", "image/svg+xml");
 		res.setHeader(
