@@ -46,6 +46,16 @@ export const getLastFmData = async (): Promise<LastFmData> => {
 	);
 	const lastTrack = recentTracksData.recenttracks.track[0];
 
+	if (!lastTrack) {
+		return {
+			albumTitle: "",
+			artistName: "",
+			trackName: "No recent tracks",
+			encodedTrackImage: "",
+			topWeeklyArtists,
+		};
+	}
+
 	const encodedTrackImage = await getLastFmImage(lastTrack.image);
 
 	return {
