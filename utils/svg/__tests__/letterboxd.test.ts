@@ -30,7 +30,7 @@ describe("letterboxd svg utils", () => {
 		const mockEntry: LetterboxdEntry = {
 			title: "Test Movie, 2016 - ⭑⭑⭑⭑",
 			link: "https://letterboxd.com/test",
-			pubDate: "2024-03-14",
+			pubDate: "Thu, 14 Mar 2024 20:00:00 +0000",
 			image:
 				"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
 		};
@@ -41,7 +41,7 @@ describe("letterboxd svg utils", () => {
 			expect(card).toContain("Test Movie");
 			expect(card).toContain("⭑⭑⭑⭑");
 			expect(card).toContain(mockEntry.image);
-			expect(card).toContain(new Date(mockEntry.pubDate).toLocaleDateString());
+			expect(card).toContain("March 14, 2024");
 		});
 
 		it("should handle entries without rating", () => {

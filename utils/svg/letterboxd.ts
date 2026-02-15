@@ -35,7 +35,7 @@ export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
       </div>
       <div class="h-[16px] flex items-center">
         <div class="text-[10px] ${theme.card.metadata.text}">
-          ${new Date(entry.pubDate).toLocaleDateString()}
+          ${new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long", year: "numeric" }).format(new Date(entry.pubDate))}
         </div>
       </div>
     </div>
