@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
 
 #bars {
   @apply relative h-5 w-10;
@@ -13,11 +12,11 @@
 
 @keyframes sound {
   0% {
-    @apply opacity-35;
+    opacity: 0.35;
     height: 3px;
   }
   100% {
-    @apply opacity-100;
+    opacity: 1;
     height: 12px;
   }
 }

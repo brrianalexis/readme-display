@@ -1,25 +1,25 @@
 import { SVG_CONFIG } from "@/constants";
-import { LetterboxdEntry } from "@/types";
+import type { LetterboxdEntry } from "@/types";
 import { getTheme } from "@/utils";
 
 export const parseEntryTitle = (title: string): [string, string] => {
-  const lastDashIndex = title.lastIndexOf(" - ");
+	const lastDashIndex = title.lastIndexOf(" - ");
 
-  if (lastDashIndex === -1) return [title, ""];
+	if (lastDashIndex === -1) return [title, ""];
 
-  return [title.slice(0, lastDashIndex), title.slice(lastDashIndex + 3)];
+	return [title.slice(0, lastDashIndex), title.slice(lastDashIndex + 3)];
 };
 
 export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
-  const [title, rating] = parseEntryTitle(entry.title);
-  const theme = getTheme(theme_name).letterboxd;
+	const [title, rating] = parseEntryTitle(entry.title);
+	const theme = getTheme(theme_name).letterboxd;
 
-  return `
+	return `
     <div class="flex-1 flex flex-col items-center px-2">
-      <div class="w-full">
-        <img 
-          src="${entry.image}" 
-          class="w-full h-16 object-contain ${theme.card.image.border}"
+      <div class="flex justify-center">
+        <img
+          src="${entry.image}"
+          class="h-16 object-contain ${theme.card.image.border}"
           alt="${title}"
         />
       </div>
@@ -35,7 +35,7 @@ export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
       </div>
       <div class="h-[16px] flex items-center">
         <div class="text-[10px] ${theme.card.metadata.text}">
-          ${new Date(entry.pubDate).toLocaleDateString()}
+          ${new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long", year: "numeric" }).format(new Date(entry.pubDate))}
         </div>
       </div>
     </div>
@@ -43,31 +43,30 @@ export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
 };
 
 export const createLetterboxdSVG = (
-  entries: LetterboxdEntry[],
-  styles: string,
-  theme_name: string = "brutal"
+	entries: LetterboxdEntry[],
+	styles: string,
+	theme_name: string = "minimal",
 ) => {
-  const theme = getTheme(theme_name).letterboxd;
+	const theme = getTheme(theme_name).letterboxd;
 
-  return `
+	return `
 <svg
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
-  xmlnsXlink="http://www.w3.org/1999/xlink"
   width="${SVG_CONFIG.letterboxd.width}"
   height="${SVG_CONFIG.letterboxd.height}"
 >
   <foreignObject width="${SVG_CONFIG.letterboxd.width}" height="${
-    SVG_CONFIG.letterboxd.height
-  }">
+		SVG_CONFIG.letterboxd.height
+	}">
     <div xmlns="http://www.w3.org/1999/xhtml" class="h-full p-2">
-      <style>${styles}</style>
+      <style><![CDATA[${styles}]]></style>
       <div class="flex flex-col h-[180px] font-sans ${
-        theme.container.background
-      } ${theme.container.border} ${theme.container.shadow} rounded-lg p-3">
+				theme.container.background
+			} ${theme.container.border} ${theme.container.shadow} rounded-lg p-3">
         <div class="text-lg font-extrabold tracking-tight ${
-          theme.title.text
-        } mb-2">
+					theme.title.text
+				} mb-2">
           🎬 Recently watched:
         </div>
         <div class="flex gap-2">

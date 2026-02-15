@@ -1,106 +1,126 @@
-import { GetStaticProps } from "next";
-import { useState } from "react";
+import type { GetStaticProps } from "next";
+import Head from "next/head";
+import { useEffect, useState } from "react";
 
 import { CodeSnippet, ThemeSelector, ThemeToggle } from "@/components";
 import { SVG_CONFIG } from "@/constants";
 
 type Props = {
-  baseUrl: string;
+	baseUrl: string;
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
+	const baseUrl = process.env.VERCEL_URL
+		? `https://${process.env.VERCEL_URL}`
+		: "http://localhost:3000";
 
-  return {
-    props: {
-      baseUrl,
-    },
-  };
+	return {
+		props: {
+			baseUrl,
+		},
+	};
 };
 
+const widgets = [
+	{
+		title: "Now Playing",
+		emoji: "🎧",
+		description: "What you're currently listening to on Last.fm",
+		endpoint: "last-fm/now-playing",
+		config: SVG_CONFIG.lastfm.now_playing,
+	},
+	{
+		title: "Top Artists",
+		emoji: "🎵",
+		description: "Your most played artists this week",
+		endpoint: "last-fm/top-artists",
+		config: SVG_CONFIG.lastfm.top_artists,
+	},
+	{
+		title: "Recent Movies",
+		emoji: "🎬",
+		description: "Your latest Letterboxd diary entries",
+		endpoint: "letterboxd",
+		config: SVG_CONFIG.letterboxd,
+	},
+] as const;
+
 export default function Home({ baseUrl }: Props) {
-  const [selectedTheme, setSelectedTheme] = useState("minimal");
+	const [selectedTheme, setSelectedTheme] = useState("minimal");
 
-  return (
-    <main className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-      <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-8 md:space-y-12">
-        <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-            Readme Display
-          </h1>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <ThemeSelector
-              selectedTheme={selectedTheme}
-              onChange={setSelectedTheme}
-            />
-            <ThemeToggle />
-          </div>
-        </div>
+	useEffect(() => {
+		const saved = localStorage.getItem("readme-display-theme");
+		if (saved) setSelectedTheme(saved);
+	}, []);
 
-        <section className="space-y-8 md:space-y-12">
-          <div className="space-y-4 md:space-y-6">
-            <h2 className="text-lg md:text-xl font-semibold text-neutral-800 dark:text-neutral-200">
-              Last.fm Now Playing
-            </h2>
-            <div className="space-y-4 md:space-y-6 bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-              <div className="overflow-x-auto">
-                <img
-                  src={`${baseUrl}/api/last-fm/now-playing?theme=${selectedTheme}`}
-                  alt="Last.fm Now Playing"
-                  width={SVG_CONFIG.lastfm.now_playing.width}
-                  height={SVG_CONFIG.lastfm.now_playing.height}
-                  className="min-w-[480px]"
-                />
-              </div>
-              <CodeSnippet>
-                {`![Last.fm Now Playing](https://your-deployment-url/api/last-fm/now-playing?theme=${selectedTheme})`}
-              </CodeSnippet>
-            </div>
-          </div>
+	return (
+		<>
+			<Head>
+				<title>Readme Display</title>
+				<meta
+					name="description"
+					content="Dynamic SVG widgets for your GitHub profile — show what you're listening to on Last.fm and watching on Letterboxd."
+				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+			</Head>
+			<main className="min-h-screen bg-gradient-to-br from-neutral-50 via-neutral-100 to-neutral-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
+			<div className="max-w-4xl mx-auto px-4 py-12 md:px-8 md:py-20">
+				<header className="flex flex-col gap-6 mb-16">
+					<div className="flex items-center justify-between">
+						<div>
+							<h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
+								Readme Display
+							</h1>
+							<p className="mt-2 text-neutral-600 dark:text-neutral-400 text-lg">
+								Dynamic widgets for your GitHub profile
+							</p>
+						</div>
+						<ThemeToggle />
+					</div>
+					<div className="flex items-center gap-3">
+						<span className="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+							Theme
+						</span>
+						<ThemeSelector
+							selectedTheme={selectedTheme}
+							onChange={setSelectedTheme}
+						/>
+					</div>
+				</header>
 
-          <div className="space-y-4 md:space-y-6">
-            <h2 className="text-lg md:text-xl font-semibold text-neutral-800 dark:text-neutral-200">
-              Last.fm Top Artists
-            </h2>
-            <div className="space-y-4 md:space-y-6 bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-              <div className="overflow-x-auto">
-                <img
-                  src={`${baseUrl}/api/last-fm/top-artists?theme=${selectedTheme}`}
-                  alt="Last.fm Top Artists"
-                  width={SVG_CONFIG.lastfm.top_artists.width}
-                  height={SVG_CONFIG.lastfm.top_artists.height}
-                  className="min-w-[480px]"
-                />
-              </div>
-              <CodeSnippet>
-                {`![Last.fm Top Artists](https://your-deployment-url/api/last-fm/top-artists?theme=${selectedTheme})`}
-              </CodeSnippet>
-            </div>
-          </div>
-
-          <div className="space-y-4 md:space-y-6">
-            <h2 className="text-lg md:text-xl font-semibold text-neutral-800 dark:text-neutral-200">
-              Letterboxd Recent Movies
-            </h2>
-            <div className="space-y-4 md:space-y-6 bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-              <div className="overflow-x-auto">
-                <img
-                  src={`${baseUrl}/api/letterboxd?theme=${selectedTheme}`}
-                  alt="Letterboxd Recent Movies"
-                  width={SVG_CONFIG.letterboxd.width}
-                  height={SVG_CONFIG.letterboxd.height}
-                  className="min-w-[480px]"
-                />
-              </div>
-              <CodeSnippet>
-                {`![Letterboxd Recent Movies](https://your-deployment-url/api/letterboxd?theme=${selectedTheme})`}
-              </CodeSnippet>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-  );
+				<section className="space-y-12">
+					{widgets.map((widget) => (
+						<div key={widget.endpoint} className="group">
+							<div className="flex items-baseline gap-3 mb-4">
+								<span className="text-2xl">{widget.emoji}</span>
+								<div>
+									<h2 className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+										{widget.title}
+									</h2>
+									<p className="text-sm text-neutral-500 dark:text-neutral-400">
+										{widget.description}
+									</p>
+								</div>
+							</div>
+							<div className="rounded-2xl bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-800 p-4 md:p-6 space-y-4 shadow-sm group-hover:shadow-md transition-shadow">
+								<div className="overflow-x-auto">
+									<img
+										src={`${baseUrl}/api/${widget.endpoint}?theme=${selectedTheme}`}
+										alt={widget.title}
+										width={widget.config.width}
+										height={widget.config.height}
+										className="min-w-[480px]"
+									/>
+								</div>
+								<CodeSnippet>
+									{`![${widget.title}](https://your-deployment-url/api/${widget.endpoint}?theme=${selectedTheme})`}
+								</CodeSnippet>
+							</div>
+						</div>
+					))}
+				</section>
+			</div>
+		</main>
+		</>
+	);
 }

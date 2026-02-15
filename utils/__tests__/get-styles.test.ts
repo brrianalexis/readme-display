@@ -1,31 +1,38 @@
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 import { getStyles } from "../get-styles";
 
-vi.mock("fs/promises");
-vi.mock("path");
+vi.mock("node:fs/promises", () => ({
+	default: {
+		readFile: vi.fn(),
+	},
+}));
 
 describe("getStyles", () => {
-  beforeEach(() => {
-    vi.mocked(path.join).mockReturnValue("/fake/path/output.css");
-  });
+	beforeEach(() => {
+		vi.spyOn(path, "join").mockReturnValue("/fake/path/output.css");
+	});
 
-  it("should read and append bar animations to CSS", async () => {
-    const mockCSS = ".some-class { color: red; }";
-    vi.mocked(fs.readFile).mockResolvedValue(mockCSS);
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
 
-    const styles = await getStyles();
+	it("should read and append bar animations to CSS", async () => {
+		const mockCSS = ".some-class { color: red; }";
+		vi.mocked(fs.readFile).mockResolvedValue(mockCSS);
 
-    expect(styles).toContain(mockCSS);
-    expect(styles).toContain(".bar:nth-child(1)");
-    expect(styles).toContain(".bar:nth-child(84)");
-    expect(styles).toMatch(/animation-duration: \d+ms/);
-  });
+		const styles = await getStyles();
 
-  it("should handle file read errors", async () => {
-    vi.mocked(fs.readFile).mockRejectedValue(new Error("File not found"));
+		expect(styles).toContain(mockCSS);
+		expect(styles).toContain(".bar:nth-child(1)");
+		expect(styles).toContain(".bar:nth-child(84)");
+		expect(styles).toMatch(/animation-duration: \d+ms/);
+	});
 
-    await expect(getStyles()).rejects.toThrow("File not found");
-  });
+	it("should handle file read errors", async () => {
+		vi.mocked(fs.readFile).mockRejectedValue(new Error("File not found"));
+
+		await expect(getStyles()).rejects.toThrow("File not found");
+	});
 });
