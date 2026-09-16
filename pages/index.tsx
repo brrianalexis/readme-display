@@ -62,6 +62,16 @@ export default function Home({ baseUrl }: Props) {
 					content="Dynamic SVG widgets for your GitHub profile — show what you're listening to on Last.fm and watching on Letterboxd."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+				<link rel="icon" href="/favicon.ico" sizes="32x32" />
+				<link
+					rel="icon"
+					href="/icon-192.png"
+					type="image/png"
+					sizes="192x192"
+				/>
+				<link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
+				<meta name="theme-color" content="#000000" />
 			</Head>
 			<main className="min-h-screen bg-gradient-to-br from-neutral-50 via-neutral-100 to-neutral-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
 			<div className="max-w-4xl mx-auto px-4 py-12 md:px-8 md:py-20">
