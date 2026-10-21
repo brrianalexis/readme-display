@@ -1,4 +1,7 @@
 export const API_CONFIG = {
+	// Keeps the whole render well under the function timeout, so a slow
+	// upstream degrades the widget instead of breaking it
+	timeout: 3500,
 	lastfm: {
 		baseUrl: "http://ws.audioscrobbler.com/2.0/",
 		methods: {

@@ -5,7 +5,7 @@ import type { LetterboxdEntry } from "@/types";
 import { encodeImage } from "./encode-image";
 import { escapeForbiddenCharacters } from "./escape-forbidden-characters";
 
-const parser = new Parser();
+const parser = new Parser({ timeout: API_CONFIG.timeout });
 
 const isReview = (guid: string): boolean => guid.includes("letterboxd-review");
 

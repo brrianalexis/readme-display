@@ -32,14 +32,22 @@ export const getTopArtists = async (): Promise<Artist[]> => {
 			period: API_CONFIG.lastfm.params.period,
 			limit: API_CONFIG.lastfm.params.limit,
 		}),
+		{ timeout: API_CONFIG.timeout },
 	);
 
-	return data.topartists.artist.slice(0, API_CONFIG.lastfm.params.limit);
+	return data.topartists.artist
+		.slice(0, API_CONFIG.lastfm.params.limit)
+		.map((artist) => ({
+			...artist,
+			name: escapeForbiddenCharacters(artist.name),
+		}));
 };
 
 export const getLastFmData = async (): Promise<LastFmData> => {
 	const [{ data: recentTracksData }, topWeeklyArtists] = await Promise.all([
-		axios.get<RecentTracksAPIResponse>(getLastFmUrl("getRecentTracks")),
+		axios.get<RecentTracksAPIResponse>(getLastFmUrl("getRecentTracks"), {
+			timeout: API_CONFIG.timeout,
+		}),
 		getTopArtists(),
 	]);
 

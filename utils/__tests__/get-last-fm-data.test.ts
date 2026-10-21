@@ -3,7 +3,7 @@ import { HttpResponse, http } from "msw";
 import { API_CONFIG } from "@/constants";
 import { server } from "@/test/mocks";
 
-import { getLastFmData } from "../get-last-fm-data";
+import { getLastFmData, getTopArtists } from "../get-last-fm-data";
 
 vi.mock("../encode-image", () => ({
 	encodeImage: vi.fn().mockResolvedValue("data:image/jpeg;base64,mockedBase64"),
@@ -66,6 +66,32 @@ describe("Last.fm", () => {
 				}),
 			]),
 		});
+	});
+
+	it("should escape forbidden characters in top artist names", async () => {
+		server.use(
+			http.get(API_CONFIG.lastfm.baseUrl, () => {
+				return HttpResponse.json({
+					topartists: {
+						artist: [
+							{
+								name: "Simon & Garfunkel",
+								playcount: "100",
+								"@attr": { rank: "1" },
+								mbid: "",
+								url: "",
+								streamable: "0",
+								image: [],
+							},
+						],
+					},
+				});
+			}),
+		);
+
+		const artists = await getTopArtists();
+
+		expect(artists[0].name).toBe("Simon &amp; Garfunkel");
 	});
 
 	it("should handle API errors", async () => {
