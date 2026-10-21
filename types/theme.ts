@@ -36,6 +36,30 @@ export const THEME_NAMES = [
 
 export type ThemeName = (typeof THEME_NAMES)[number];
 
+// Mirrors the CSS filter functions, applied in key order. Rendered as an SVG
+// filter because CSS filters inside a foreignObject break in WebKit when the
+// widget is scaled down
+export type ImageFilter = Partial<
+	Record<
+		| "blur"
+		| "brightness"
+		| "contrast"
+		| "grayscale"
+		| "hueRotate"
+		| "invert"
+		| "opacity"
+		| "saturate"
+		| "sepia",
+		number
+	>
+>;
+
+export type ThemeImage = {
+	border: string;
+	filter?: ImageFilter;
+	darkFilter?: ImageFilter;
+};
+
 export type BaseThemeConfig = {
 	container: {
 		background: string;
@@ -50,9 +74,7 @@ export type BaseThemeConfig = {
 
 export type LetterboxdThemeConfig = BaseThemeConfig & {
 	card: {
-		image: {
-			border: string;
-		};
+		image: ThemeImage;
 		title: {
 			text: string;
 		};
@@ -68,9 +90,7 @@ export type LetterboxdThemeConfig = BaseThemeConfig & {
 export type LastFmThemeConfig = BaseThemeConfig & {
 	now_playing: {
 		height?: number;
-		image: {
-			border: string;
-		};
+		image: ThemeImage;
 		track: {
 			text: string;
 		};

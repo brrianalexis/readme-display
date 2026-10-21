@@ -18,7 +18,6 @@ export async function getStyles() {
 			.map(
 				(_, i) => `
         .bar:nth-child(${i + 1}) {
-          left: ${i * 4}px;
           animation-duration: ${Math.floor(Math.random() * range) + min_duration}ms;
         }
       `,

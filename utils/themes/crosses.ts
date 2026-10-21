@@ -22,8 +22,14 @@ export const crossesTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border border-white/20 grayscale contrast-110 brightness-90 [filter:grayscale(1)_contrast(1.1)_brightness(0.9)_sepia(0.3)_hue-rotate(180deg)]",
+				border: "border border-white/20",
+				filter: {
+					grayscale: 1,
+					contrast: 1.1,
+					brightness: 0.9,
+					sepia: 0.3,
+					hueRotate: 180,
+				},
 			},
 			title: {
 				text: "text-white dark:text-white font-semibold tracking-[0.1em] uppercase text-xs",
@@ -44,8 +50,14 @@ export const crossesTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border:
-					"border border-white/20 [filter:grayscale(1)_contrast(1.1)_brightness(0.9)_sepia(0.3)_hue-rotate(180deg)]",
+				border: "border border-white/20",
+				filter: {
+					grayscale: 1,
+					contrast: 1.1,
+					brightness: 0.9,
+					sepia: 0.3,
+					hueRotate: 180,
+				},
 			},
 			track: {
 				text: "text-white dark:text-white font-semibold tracking-[0.1em] uppercase text-xs",

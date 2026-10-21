@@ -16,8 +16,8 @@ export const lateralusTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border border-purple-700/50 [filter:contrast(1.15)_saturate(1.4)_brightness(0.95)]",
+				border: "border border-purple-700/50",
+				filter: { contrast: 1.15, saturate: 1.4, brightness: 0.95 },
 			},
 			title: {
 				text: "text-rose-100 dark:text-rose-100 font-light tracking-[0.15em] uppercase text-xs",
@@ -38,8 +38,8 @@ export const lateralusTheme: ThemeConfig = {
 		now_playing: {
 			height: 160,
 			image: {
-				border:
-					"border border-purple-700/50 [filter:contrast(1.15)_saturate(1.4)_brightness(0.95)]",
+				border: "border border-purple-700/50",
+				filter: { contrast: 1.15, saturate: 1.4, brightness: 0.95 },
 			},
 			track: {
 				text: "text-rose-100 dark:text-rose-100 font-light tracking-[0.15em] uppercase text-xs",

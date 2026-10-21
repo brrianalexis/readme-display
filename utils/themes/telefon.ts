@@ -15,8 +15,8 @@ export const telefonTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border border-slate-400/40 [filter:contrast(0.95)_brightness(1.05)_saturate(0.85)]",
+				border: "border border-slate-400/40",
+				filter: { contrast: 0.95, brightness: 1.05, saturate: 0.85 },
 			},
 			title: {
 				text: "text-slate-800 dark:text-amber-100 font-mono lowercase tracking-tight text-xs",
@@ -36,8 +36,8 @@ export const telefonTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border:
-					"border border-slate-400/40 [filter:contrast(0.95)_brightness(1.05)_saturate(0.85)]",
+				border: "border border-slate-400/40",
+				filter: { contrast: 0.95, brightness: 1.05, saturate: 0.85 },
 			},
 			track: {
 				text: "text-slate-800 dark:text-amber-100 font-mono lowercase tracking-tight text-sm",

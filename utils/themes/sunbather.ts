@@ -14,7 +14,8 @@ export const sunbatherTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "contrast-125 brightness-110 saturate-150",
+				border: "",
+				filter: { brightness: 1.1, contrast: 1.25, saturate: 1.5 },
 			},
 			title: {
 				text: "text-white dark:text-white font-extralight tracking-[0.15em] uppercase text-xs",
@@ -37,7 +38,8 @@ export const sunbatherTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "contrast-125 brightness-110 saturate-150",
+				border: "",
+				filter: { brightness: 1.1, contrast: 1.25, saturate: 1.5 },
 			},
 			track: {
 				text: "text-white dark:text-white font-extralight tracking-[0.15em] uppercase text-xs",

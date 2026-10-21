@@ -16,8 +16,9 @@ export const glassjawTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border-2 border-emerald-800/30 dark:border-red-700/40 [filter:contrast(1.05)_saturate(0.9)] dark:[filter:contrast(1.1)_brightness(0.95)_sepia(0.15)]",
+				border: "border-2 border-emerald-800/30 dark:border-red-700/40",
+				filter: { contrast: 1.05, saturate: 0.9 },
+				darkFilter: { contrast: 1.1, brightness: 0.95, sepia: 0.15 },
 			},
 			title: {
 				text: "text-emerald-950 dark:text-stone-100 font-bold uppercase tracking-[0.1em] text-xs",
@@ -37,8 +38,9 @@ export const glassjawTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border:
-					"border-2 border-emerald-800/30 dark:border-red-700/40 [filter:contrast(1.05)_saturate(0.9)] dark:[filter:contrast(1.1)_brightness(0.95)_sepia(0.15)]",
+				border: "border-2 border-emerald-800/30 dark:border-red-700/40",
+				filter: { contrast: 1.05, saturate: 0.9 },
+				darkFilter: { contrast: 1.1, brightness: 0.95, sepia: 0.15 },
 			},
 			track: {
 				text: "text-emerald-950 dark:text-stone-100 font-bold uppercase tracking-[0.1em] text-sm",

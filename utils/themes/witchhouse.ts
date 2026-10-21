@@ -13,7 +13,8 @@ export const witchhouseTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "grayscale contrast-200 brightness-50",
+				border: "",
+				filter: { brightness: 0.5, contrast: 2, grayscale: 1 },
 			},
 			title: {
 				text: "text-white/80 dark:text-white/80 font-light tracking-[0.3em]",
@@ -35,7 +36,8 @@ export const witchhouseTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "grayscale contrast-200 brightness-50",
+				border: "",
+				filter: { brightness: 0.5, contrast: 2, grayscale: 1 },
 			},
 			track: {
 				text: "text-white/80 dark:text-white/80 font-light tracking-[0.3em]",

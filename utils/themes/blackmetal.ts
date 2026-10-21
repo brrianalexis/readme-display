@@ -12,7 +12,8 @@ export const blackmetalTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "grayscale contrast-[2] brightness-90 invert",
+				border: "",
+				filter: { brightness: 0.9, contrast: 2, grayscale: 1, invert: 1 },
 			},
 			title: {
 				text: "text-white dark:text-white font-metal uppercase tracking-[0.1em] text-shadow-brutal",
@@ -33,7 +34,8 @@ export const blackmetalTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "grayscale contrast-[2] brightness-90 invert",
+				border: "",
+				filter: { brightness: 0.9, contrast: 2, grayscale: 1, invert: 1 },
 			},
 			track: {
 				text: "text-white dark:text-white font-metal uppercase tracking-[0.1em] text-shadow-brutal",

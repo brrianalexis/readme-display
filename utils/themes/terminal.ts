@@ -13,7 +13,8 @@ export const terminalTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "brightness-[0.8] contrast-[1.2] opacity-90",
+				border: "",
+				filter: { brightness: 0.8, contrast: 1.2, opacity: 0.9 },
 			},
 			title: {
 				text: "text-green-400 dark:text-green-400 font-mono",
@@ -35,7 +36,8 @@ export const terminalTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "brightness-[0.8] contrast-[1.2] opacity-90",
+				border: "",
+				filter: { brightness: 0.8, contrast: 1.2, opacity: 0.9 },
 			},
 			track: {
 				text: "text-green-400 dark:text-green-400 font-mono",

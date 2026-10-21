@@ -14,7 +14,8 @@ export const citypopTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "rounded-lg brightness-105 saturate-[1.2]",
+				border: "rounded-lg",
+				filter: { brightness: 1.05, saturate: 1.2 },
 			},
 			title: {
 				text: "text-pink-600 dark:text-pink-400 font-medium",
@@ -37,7 +38,8 @@ export const citypopTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "rounded-lg brightness-105 saturate-[1.2]",
+				border: "rounded-lg",
+				filter: { brightness: 1.05, saturate: 1.2 },
 			},
 			track: {
 				text: "text-pink-600 dark:text-pink-400 font-medium",
