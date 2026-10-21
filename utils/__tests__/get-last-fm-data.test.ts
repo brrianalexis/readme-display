@@ -3,7 +3,11 @@ import { HttpResponse, http } from "msw";
 import { API_CONFIG } from "@/constants";
 import { server } from "@/test/mocks";
 
-import { getLastFmData, getTopArtists } from "../get-last-fm-data";
+import {
+	getLastFmData,
+	getLastFmImageCandidates,
+	getTopArtists,
+} from "../get-last-fm-data";
 
 vi.mock("../encode-image", () => ({
 	encodeImage: vi.fn().mockResolvedValue("data:image/jpeg;base64,mockedBase64"),
@@ -102,5 +106,18 @@ describe("Last.fm", () => {
 		);
 
 		await expect(getLastFmData()).rejects.toThrow();
+	});
+});
+
+describe("getLastFmImageCandidates", () => {
+	it("should try the original URL first, then alternate hosts and sizes", () => {
+		const url = "https://lastfm-img.freetls.fastly.net/i/u/300x300/abc123.png";
+
+		expect(getLastFmImageCandidates(url)).toEqual([
+			url,
+			"https://lastfm.freetls.fastly.net/i/u/300x300/abc123.png",
+			"https://lastfm-img.freetls.fastly.net/i/u/174s/abc123.png",
+			"https://lastfm.freetls.fastly.net/i/u/174s/abc123.png",
+		]);
 	});
 });
