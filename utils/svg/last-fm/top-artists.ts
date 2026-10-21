@@ -6,7 +6,7 @@ const createWeeklyArtists = (artists: Artist[], theme_name: string) => {
 	const theme = getTheme(theme_name).lastfm;
 
 	return `
-    <div class="flex flex-col ${theme.container.background} ${
+    <div class="flex flex-col h-full ${theme.container.background} ${
 			theme.container.border
 		} ${theme.container.shadow} rounded-lg p-4">
       <div class="text-xl font-extrabold tracking-tight ${
@@ -14,7 +14,7 @@ const createWeeklyArtists = (artists: Artist[], theme_name: string) => {
 			} mb-2">
         ${theme.title.transform?.("🎵 On repeat lately:") ?? "🎵 On repeat lately:"}
       </div>  
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-1 flex-col justify-between gap-2">
         ${artists
 					.map((artist, index) => {
 						const rank = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"][index];
@@ -52,9 +52,9 @@ export const createLastFmTopArtistsSVG = (
   height="${height}"
 >
   <foreignObject width="${SVG_CONFIG.lastfm.top_artists.width}" height="${height}">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="p-2">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="box-border h-full p-2">
       <style><![CDATA[${styles}]]></style>
-      <div class="flex flex-col gap-3 font-sans">
+      <div class="flex flex-col h-full gap-3 font-sans">
         ${createWeeklyArtists(artists, theme_name)}
       </div>
     </div>
