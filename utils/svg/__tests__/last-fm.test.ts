@@ -1,5 +1,6 @@
 import { SVG_CONFIG } from "@/constants";
 import { type Artist, type LastFmWidgetNowPlaying, THEME_NAMES } from "@/types";
+import { getTheme } from "@/utils";
 
 import {
 	createLastFmTopArtistsSVG,
@@ -39,12 +40,20 @@ describe("last-fm svg utils", () => {
 			THEME_NAMES,
 		)("should create now playing widget for %s theme", (theme) => {
 			const widget = createNowPlaying(mockProps, theme);
+			const { title, now_playing } = getTheme(theme).lastfm;
+
+			const expectedTitle = "🎧 Last seen vibing to:";
+			const expectedArtist = mockProps.artistName;
 
 			expect(widget).toContain(mockProps.trackName);
-			expect(widget).toContain(mockProps.artistName);
+			expect(widget).toContain(
+				now_playing.artist.transform?.(expectedArtist) ?? expectedArtist,
+			);
 			expect(widget).toContain(mockProps.albumTitle);
 			expect(widget).toContain(mockProps.encodedTrackImage);
-			expect(widget).toContain("Last seen vibing to:");
+			expect(widget).toContain(
+				title.transform?.(expectedTitle) ?? expectedTitle,
+			);
 		});
 	});
 
@@ -65,12 +74,19 @@ describe("last-fm svg utils", () => {
 			THEME_NAMES,
 		)("should create top artists SVG for %s theme", (theme) => {
 			const svg = createLastFmTopArtistsSVG(mockArtists, mockStyles, theme);
+			const { title, top_artists } = getTheme(theme).lastfm;
+
+			const expectedTitle = "🎵 On repeat lately:";
+			const expectedHeight =
+				top_artists.height ?? SVG_CONFIG.lastfm.top_artists.height;
 
 			expect(svg).toContain(`width="${SVG_CONFIG.lastfm.top_artists.width}"`);
-			expect(svg).toContain(`height="${SVG_CONFIG.lastfm.top_artists.height}"`);
-			expect(svg).toContain("On repeat lately:");
+			expect(svg).toContain(`height="${expectedHeight}"`);
+			expect(svg).toContain(title.transform?.(expectedTitle) ?? expectedTitle);
 			mockArtists.forEach((artist) => {
-				expect(svg).toContain(artist.name);
+				expect(svg).toContain(
+					top_artists.artist.transform?.(artist.name) ?? artist.name,
+				);
 				expect(svg).toContain(`${artist.playcount} plays`);
 			});
 			expect(svg).toContain(mockStyles);

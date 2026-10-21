@@ -30,7 +30,7 @@ export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
       </div>
       <div class="h-[16px] flex items-center">
         <div class="text-xs font-medium ${theme.card.metadata.text}">
-          ${rating || ""}
+          ${rating ? (theme.card.rating ? `<span class="${theme.card.rating.text}">${rating}</span>` : rating) : ""}
         </div>
       </div>
       <div class="h-[16px] flex items-center">
@@ -67,7 +67,7 @@ export const createLetterboxdSVG = (
         <div class="text-lg font-extrabold tracking-tight ${
 					theme.title.text
 				} mb-2">
-          🎬 Recently watched:
+          ${theme.title.transform?.("🎬 Recently watched:") ?? "🎬 Recently watched:"}
         </div>
         <div class="flex gap-2">
           ${entries.map((entry) => createEntryCard(entry, theme_name)).join("")}

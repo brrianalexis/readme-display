@@ -12,7 +12,7 @@ const createWeeklyArtists = (artists: Artist[], theme_name: string) => {
       <div class="text-xl font-extrabold tracking-tight ${
 				theme.title.text
 			} mb-2">
-        🎵 On repeat lately:
+        ${theme.title.transform?.("🎵 On repeat lately:") ?? "🎵 On repeat lately:"}
       </div>  
       <div class="flex flex-col gap-2">
         ${artists
@@ -23,7 +23,7 @@ const createWeeklyArtists = (artists: Artist[], theme_name: string) => {
               <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
                   <div class="text-base min-w-[24px] text-center ${theme.top_artists.rank.text}">${rank}</div>
-                  <div class="font-bold ${theme.top_artists.artist.text} text-sm">${artist.name}</div>
+                  <div class="font-bold ${theme.top_artists.artist.text} text-sm">${theme.top_artists.artist.transform?.(artist.name) ?? artist.name}</div>
                 </div>
                 <div class="text-xs ${theme.top_artists.plays.text}">${artist.playcount} plays</div>
               </div>
@@ -39,16 +39,19 @@ export const createLastFmTopArtistsSVG = (
 	artists: Artist[],
 	styles: string,
 	theme_name: string = "minimal",
-) => `
+) => {
+	const height =
+		getTheme(theme_name).lastfm.top_artists.height ??
+		SVG_CONFIG.lastfm.top_artists.height;
+
+	return `
 <svg
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   width="${SVG_CONFIG.lastfm.top_artists.width}"
-  height="${SVG_CONFIG.lastfm.top_artists.height}"
+  height="${height}"
 >
-  <foreignObject width="${SVG_CONFIG.lastfm.top_artists.width}" height="${
-		SVG_CONFIG.lastfm.top_artists.height
-	}">
+  <foreignObject width="${SVG_CONFIG.lastfm.top_artists.width}" height="${height}">
     <div xmlns="http://www.w3.org/1999/xhtml" class="p-2">
       <style><![CDATA[${styles}]]></style>
       <div class="flex flex-col gap-3 font-sans">
@@ -58,3 +61,4 @@ export const createLastFmTopArtistsSVG = (
   </foreignObject>
 </svg>
 `;
+};
