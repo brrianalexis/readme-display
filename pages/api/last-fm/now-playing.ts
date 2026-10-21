@@ -20,8 +20,11 @@ export default async function handler(
 		const svgContent = createLastFmNowPlayingSVG(data, styles, theme);
 
 		res.setHeader("Content-Type", "image/svg+xml");
+		// GitHub's image proxy caches based on Cache-Control, so tell it to always
+		// revalidate and keep the shared caching on Vercel's CDN only
+		res.setHeader("Cache-Control", "no-cache, max-age=0");
 		res.setHeader(
-			"Cache-Control",
+			"CDN-Cache-Control",
 			"public, s-maxage=60, stale-while-revalidate=30",
 		);
 		res.send(svgContent);
