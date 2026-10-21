@@ -26,11 +26,12 @@ const getLastFmImage = async (
 	return encodeImage(getLastFmImageCandidates(image["#text"]));
 };
 
-// Last.fm's image CDN sometimes answers 404 from Vercel for URLs that work
-// elsewhere, so also try the alternate host and a smaller size
+// The API returns covers on lastfm-img.freetls.fastly.net, but that host
+// answers 404 from Vercel for URLs that work elsewhere. The alternate host
+// goes first and the original stays as a fallback, then a smaller size
 const LASTFM_IMAGE_HOSTS = [
-	"lastfm-img.freetls.fastly.net",
 	"lastfm.freetls.fastly.net",
+	"lastfm-img.freetls.fastly.net",
 ];
 
 export const getLastFmImageCandidates = (url: string): string[] => {
@@ -45,7 +46,7 @@ export const getLastFmImageCandidates = (url: string): string[] => {
 		LASTFM_IMAGE_HOSTS.map((host) => `https://${host}${path}`),
 	);
 
-	return [...new Set([url, ...candidates])];
+	return [...new Set([...candidates, url])];
 };
 
 export const getTopArtists = async (): Promise<Artist[]> => {

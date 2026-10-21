@@ -110,14 +110,20 @@ describe("Last.fm", () => {
 });
 
 describe("getLastFmImageCandidates", () => {
-	it("should try the original URL first, then alternate hosts and sizes", () => {
+	it("should try the alternate host first, then the original and smaller sizes", () => {
 		const url = "https://lastfm-img.freetls.fastly.net/i/u/300x300/abc123.png";
 
 		expect(getLastFmImageCandidates(url)).toEqual([
-			url,
 			"https://lastfm.freetls.fastly.net/i/u/300x300/abc123.png",
-			"https://lastfm-img.freetls.fastly.net/i/u/174s/abc123.png",
+			url,
 			"https://lastfm.freetls.fastly.net/i/u/174s/abc123.png",
+			"https://lastfm-img.freetls.fastly.net/i/u/174s/abc123.png",
 		]);
+	});
+
+	it("should keep URLs from unknown hosts as the last fallback", () => {
+		const url = "https://example.com/i/u/300x300/abc123.png";
+
+		expect(getLastFmImageCandidates(url).at(-1)).toBe(url);
 	});
 });
