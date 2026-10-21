@@ -12,7 +12,8 @@ export const postpunkTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "grayscale contrast-125 brightness-110",
+				border: "",
+				filter: { brightness: 1.1, contrast: 1.25, grayscale: 1 },
 			},
 			title: {
 				text: "text-neutral-800 dark:text-neutral-300 font-light uppercase tracking-[0.15em] text-xs",
@@ -33,7 +34,8 @@ export const postpunkTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "grayscale contrast-125 brightness-110",
+				border: "",
+				filter: { brightness: 1.1, contrast: 1.25, grayscale: 1 },
 			},
 			track: {
 				text: "text-neutral-800 dark:text-neutral-300 font-light uppercase tracking-[0.15em] text-xs",

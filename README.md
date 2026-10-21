@@ -42,23 +42,17 @@ LASTFM_API_KEY=your-lastfm-api-key
 LETTERBOXD_USERNAME=your-letterboxd-username
 ```
 
-4. Choose a theme and add it as a query param to the URL. If no theme is provided, the default theme will be used. The available themes are:
+4. Choose a theme and add it as a query param to the URL. If no theme is provided, `minimal` is used. Preview every theme live at [readme-display.vercel.app](https://readme-display.vercel.app). The 33 available themes are:
 
-- `blackmetal`
-- `brutal`
-- `citypop`
-- `darkwave`
-- `gameboy`
-- `glass`
-- `minimal` (default)
-- `neon`
-- `postpunk`
-- `retro`
-- `sunbather`
-- `synthwave`
-- `terminal`
-- `vaporwave`
-- `witchhouse`
+|   |   |   |   |   |
+|---|---|---|---|---|
+| `blackmetal` | `bossanova` | `brutal` | `catppuccin` | `citypop` |
+| `colors` | `crimson` | `crosses` | `darkwave` | `dracula` |
+| `gameboy` | `glass` | `glassjaw` | `grunge` | `ink` |
+| `lateralus` | `lofi` | `minimal` (default) | `neon` | `outrun` |
+| `postpunk` | `retro` | `shoegaze` | `skye` | `solarized` |
+| `sunbather` | `synthwave` | `telefon` | `terminal` | `turnstile` |
+| `vaporwave` | `witchhouse` | `y2k` |  |  |
 
 5. Add the widgets you want to your readme:
 

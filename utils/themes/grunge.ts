@@ -12,7 +12,8 @@ export const grungeTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "border-2 border-[#5c4a2a] grayscale-[30%]",
+				border: "border-2 border-[#5c4a2a]",
+				filter: { grayscale: 0.3 },
 			},
 			title: {
 				text: "text-[#d4c49a] font-black uppercase",
@@ -33,7 +34,8 @@ export const grungeTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "border-2 border-[#5c4a2a] grayscale-[30%]",
+				border: "border-2 border-[#5c4a2a]",
+				filter: { grayscale: 0.3 },
 			},
 			track: {
 				text: "text-[#d4c49a] font-black uppercase",

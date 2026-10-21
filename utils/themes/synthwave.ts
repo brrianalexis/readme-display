@@ -10,14 +10,14 @@ export const synthwaveTheme: ThemeConfig = {
 				"shadow-[0_0_30px_rgba(249,115,22,0.3)] dark:shadow-[0_0_30px_rgba(251,146,60,0.3)]",
 		},
 		title: {
-			text: "text-orange-400 dark:text-orange-300 font-bold drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]",
+			text: "text-orange-400 dark:text-orange-300 font-bold [text-shadow:0_0_8px_rgba(249,115,22,0.5)]",
 		},
 		card: {
 			image: {
 				border: "border border-orange-500/30 dark:border-orange-400/30 rounded",
 			},
 			title: {
-				text: "text-purple-100 dark:text-purple-200 font-bold drop-shadow-[0_0_8px_rgba(216,180,254,0.5)]",
+				text: "text-purple-100 dark:text-purple-200 font-bold [text-shadow:0_0_8px_rgba(216,180,254,0.5)]",
 			},
 			metadata: {
 				text: "text-orange-300/80 dark:text-orange-200/80",
@@ -33,14 +33,14 @@ export const synthwaveTheme: ThemeConfig = {
 				"shadow-[0_0_30px_rgba(249,115,22,0.3)] dark:shadow-[0_0_30px_rgba(251,146,60,0.3)]",
 		},
 		title: {
-			text: "text-orange-400 dark:text-orange-300 font-bold drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]",
+			text: "text-orange-400 dark:text-orange-300 font-bold [text-shadow:0_0_8px_rgba(249,115,22,0.5)]",
 		},
 		now_playing: {
 			image: {
 				border: "border border-orange-500/30 dark:border-orange-400/30 rounded",
 			},
 			track: {
-				text: "text-purple-100 dark:text-purple-200 font-bold drop-shadow-[0_0_8px_rgba(216,180,254,0.5)]",
+				text: "text-purple-100 dark:text-purple-200 font-bold [text-shadow:0_0_8px_rgba(216,180,254,0.5)]",
 			},
 			artist: {
 				text: "text-orange-300/80 dark:text-orange-200/80",
@@ -59,7 +59,7 @@ export const synthwaveTheme: ThemeConfig = {
 				text: "text-orange-300/80 dark:text-orange-200/80",
 			},
 			artist: {
-				text: "text-purple-100 dark:text-purple-200 font-bold drop-shadow-[0_0_8px_rgba(216,180,254,0.5)]",
+				text: "text-purple-100 dark:text-purple-200 font-bold [text-shadow:0_0_8px_rgba(216,180,254,0.5)]",
 			},
 			plays: {
 				text: "text-orange-300/80 dark:text-orange-200/80",

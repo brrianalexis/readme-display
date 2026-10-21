@@ -12,7 +12,8 @@ export const inkTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "border-2 border-black dark:border-white grayscale",
+				border: "border-2 border-black dark:border-white",
+				filter: { grayscale: 1 },
 			},
 			title: {
 				text: "text-black dark:text-white font-black",
@@ -33,7 +34,8 @@ export const inkTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "border-2 border-black dark:border-white grayscale",
+				border: "border-2 border-black dark:border-white",
+				filter: { grayscale: 1 },
 			},
 			track: {
 				text: "text-black dark:text-white font-black",

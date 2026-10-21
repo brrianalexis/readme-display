@@ -16,8 +16,8 @@ export const skyeTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border border-amber-500/50 [filter:sepia(0.4)_saturate(1.3)_contrast(1.1)_hue-rotate(-10deg)]",
+				border: "border border-amber-500/50",
+				filter: { sepia: 0.4, saturate: 1.3, contrast: 1.1, hueRotate: -10 },
 			},
 			title: {
 				text: "text-amber-100 dark:text-amber-100 font-serif font-semibold tracking-[0.05em] text-xs",
@@ -37,8 +37,8 @@ export const skyeTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border:
-					"border border-amber-500/50 [filter:sepia(0.4)_saturate(1.3)_contrast(1.1)_hue-rotate(-10deg)]",
+				border: "border border-amber-500/50",
+				filter: { sepia: 0.4, saturate: 1.3, contrast: 1.1, hueRotate: -10 },
 			},
 			track: {
 				text: "text-amber-100 dark:text-amber-100 font-serif font-semibold tracking-[0.05em] text-xs",

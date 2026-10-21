@@ -12,8 +12,8 @@ export const gameboyTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border-[2px] border-[#306230] dark:border-[#8bac0f] grayscale contrast-125 brightness-110",
+				border: "border-[2px] border-[#306230] dark:border-[#8bac0f]",
+				filter: { brightness: 1.1, contrast: 1.25, grayscale: 1 },
 			},
 			title: {
 				text: "text-[#0f380f] dark:text-[#9bbc0f] font-bold",
@@ -34,8 +34,8 @@ export const gameboyTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border:
-					"border-[2px] border-[#306230] dark:border-[#8bac0f] grayscale contrast-125 brightness-110",
+				border: "border-[2px] border-[#306230] dark:border-[#8bac0f]",
+				filter: { brightness: 1.1, contrast: 1.25, grayscale: 1 },
 			},
 			track: {
 				text: "text-[#0f380f] dark:text-[#9bbc0f] font-bold",

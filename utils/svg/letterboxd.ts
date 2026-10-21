@@ -2,6 +2,8 @@ import { SVG_CONFIG } from "@/constants";
 import type { LetterboxdEntry } from "@/types";
 import { getTheme } from "@/utils";
 
+import { createThemedImage } from "./image";
+
 export const parseEntryTitle = (title: string): [string, string] => {
 	const lastDashIndex = title.lastIndexOf(" - ");
 
@@ -10,18 +12,26 @@ export const parseEntryTitle = (title: string): [string, string] => {
 	return [title.slice(0, lastDashIndex), title.slice(lastDashIndex + 3)];
 };
 
-export const createEntryCard = (entry: LetterboxdEntry, theme_name: string) => {
+export const createEntryCard = (
+	entry: LetterboxdEntry,
+	theme_name: string,
+	index = 0,
+) => {
 	const [title, rating] = parseEntryTitle(entry.title);
 	const theme = getTheme(theme_name).letterboxd;
 
 	return `
     <div class="flex-1 flex flex-col items-center px-2">
       <div class="flex justify-center">
-        <img
-          src="${entry.image}"
-          class="h-16 object-contain ${theme.card.image.border}"
-          alt="${title}"
-        />
+        ${createThemedImage({
+					id: `poster-${index}`,
+					src: entry.image,
+					alt: title,
+					width: 43,
+					height: 64,
+					className: "h-16 w-[43px] object-contain",
+					image: theme.card.image,
+				})}
       </div>
       <div class="h-[32px] flex items-center text-center mt-2">
         <div class="text-xs font-bold ${theme.card.title.text} line-clamp-2">
@@ -70,7 +80,7 @@ export const createLetterboxdSVG = (
           ${theme.title.transform?.("🎬 Recently watched:") ?? "🎬 Recently watched:"}
         </div>
         <div class="flex gap-2">
-          ${entries.map((entry) => createEntryCard(entry, theme_name)).join("")}
+          ${entries.map((entry, i) => createEntryCard(entry, theme_name, i)).join("")}
         </div>
       </div>
     </div>

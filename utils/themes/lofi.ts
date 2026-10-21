@@ -12,8 +12,8 @@ export const lofiTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border border-[#d4cbbf] dark:border-[#3d3632] rounded sepia-[15%]",
+				border: "border border-[#d4cbbf] dark:border-[#3d3632] rounded",
+				filter: { sepia: 0.15 },
 			},
 			title: {
 				text: "text-[#5c5044] dark:text-[#c4b8a4] font-medium",
@@ -34,8 +34,8 @@ export const lofiTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border:
-					"border border-[#d4cbbf] dark:border-[#3d3632] rounded sepia-[15%]",
+				border: "border border-[#d4cbbf] dark:border-[#3d3632] rounded",
+				filter: { sepia: 0.15 },
 			},
 			track: {
 				text: "text-[#5c5044] dark:text-[#c4b8a4] font-medium",

@@ -17,7 +17,8 @@ export const turnstileTheme: ThemeConfig = {
 		card: {
 			image: {
 				border:
-					"border-2 border-white/80 rounded-md shadow-[0_4px_12px_rgba(244,114,182,0.3)] dark:shadow-[0_4px_12px_rgba(56,189,248,0.3)] saturate-110",
+					"border-2 border-white/80 rounded-md shadow-[0_4px_12px_rgba(244,114,182,0.3)] dark:shadow-[0_4px_12px_rgba(56,189,248,0.3)]",
+				filter: { saturate: 1.1 },
 			},
 			title: {
 				text: "text-[#c2466f] dark:text-sky-900 font-bold uppercase tracking-tight text-xs",
@@ -38,7 +39,8 @@ export const turnstileTheme: ThemeConfig = {
 		now_playing: {
 			image: {
 				border:
-					"border-2 border-white/80 rounded-md shadow-[0_4px_12px_rgba(244,114,182,0.3)] dark:shadow-[0_4px_12px_rgba(56,189,248,0.3)] saturate-110",
+					"border-2 border-white/80 rounded-md shadow-[0_4px_12px_rgba(244,114,182,0.3)] dark:shadow-[0_4px_12px_rgba(56,189,248,0.3)]",
+				filter: { saturate: 1.1 },
 			},
 			track: {
 				text: "text-[#c2466f] dark:text-sky-900 font-bold uppercase tracking-tight text-sm",

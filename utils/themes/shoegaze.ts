@@ -14,7 +14,8 @@ export const shoegazeTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "opacity-80 blur-[0.5px] rounded-lg",
+				border: "rounded-lg",
+				filter: { blur: 0.5, opacity: 0.8 },
 			},
 			title: {
 				text: "text-rose-500/80 dark:text-rose-300/70 font-light italic",
@@ -37,7 +38,8 @@ export const shoegazeTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "opacity-80 blur-[0.5px] rounded-lg",
+				border: "rounded-lg",
+				filter: { blur: 0.5, opacity: 0.8 },
 			},
 			track: {
 				text: "text-rose-500/80 dark:text-rose-300/70 font-light italic",

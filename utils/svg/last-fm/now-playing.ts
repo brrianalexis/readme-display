@@ -2,6 +2,8 @@ import { SVG_CONFIG } from "@/constants";
 import type { LastFmWidgetNowPlaying } from "@/types";
 import { getTheme } from "@/utils";
 
+import { createThemedImage } from "../image";
+
 export const createSoundBars = (theme_name: string) => {
 	const theme = getTheme(theme_name).lastfm;
 
@@ -33,9 +35,15 @@ export const createNowPlaying = (
       </div>
       <div class="flex flex-1 items-center gap-4">
         <div class="w-[80px]">
-          <img src="${props.encodedTrackImage}" class="w-[80px] h-[80px] ${
-						theme.now_playing.image.border
-					}" alt="${props.albumTitle} by ${props.artistName} album cover" />
+          ${createThemedImage({
+						id: "cover",
+						src: props.encodedTrackImage,
+						alt: `${props.albumTitle} by ${props.artistName} album cover`,
+						width: 80,
+						height: 80,
+						className: "w-[80px] h-[80px]",
+						image: theme.now_playing.image,
+					})}
         </div>
         <div class="flex-1">
           <div class="text-lg font-extrabold tracking-tight ${
@@ -46,7 +54,7 @@ export const createNowPlaying = (
           <div class="text-base ${theme.now_playing.artist.text}">
             ${theme.now_playing.artist.transform?.(props.artistName) ?? props.artistName}
           </div>
-          <div id="bars" class="my-1 relative w-10 h-[20px]">
+          <div id="bars" class="my-1">
             ${createSoundBars(theme_name)}
           </div>
         </div>

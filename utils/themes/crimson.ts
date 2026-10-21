@@ -16,8 +16,8 @@ export const crimsonTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border:
-					"border border-rose-900/60 [filter:contrast(1.1)_saturate(1.2)_hue-rotate(-5deg)]",
+				border: "border border-rose-900/60",
+				filter: { contrast: 1.1, saturate: 1.2, hueRotate: -5 },
 			},
 			title: {
 				text: "text-rose-100 dark:text-rose-100 font-serif font-semibold tracking-tight text-xs",
@@ -37,8 +37,8 @@ export const crimsonTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border:
-					"border border-rose-900/60 [filter:contrast(1.1)_saturate(1.2)_hue-rotate(-5deg)]",
+				border: "border border-rose-900/60",
+				filter: { contrast: 1.1, saturate: 1.2, hueRotate: -5 },
 			},
 			track: {
 				text: "text-rose-100 dark:text-rose-100 font-serif font-semibold tracking-tight text-sm",

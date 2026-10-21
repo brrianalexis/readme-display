@@ -18,7 +18,8 @@ export const colorsTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "border border-white/60 grayscale contrast-125 brightness-110",
+				border: "border border-white/60",
+				filter: { brightness: 1.1, contrast: 1.25, grayscale: 1 },
 			},
 			title: {
 				text: "text-white dark:text-white font-extralight tracking-[0.2em] uppercase text-xs",
@@ -38,7 +39,8 @@ export const colorsTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "border border-white/60 grayscale contrast-125 brightness-110",
+				border: "border border-white/60",
+				filter: { brightness: 1.1, contrast: 1.25, grayscale: 1 },
 			},
 			track: {
 				text: "text-white dark:text-white font-extralight tracking-[0.2em] uppercase text-xs",

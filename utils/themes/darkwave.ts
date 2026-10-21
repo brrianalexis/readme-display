@@ -13,7 +13,8 @@ export const darkwaveTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "grayscale contrast-150 brightness-75",
+				border: "",
+				filter: { brightness: 0.75, contrast: 1.5, grayscale: 1 },
 			},
 			title: {
 				text: "text-white dark:text-white uppercase tracking-widest text-[0.9em]",
@@ -35,7 +36,8 @@ export const darkwaveTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "grayscale contrast-150 brightness-75",
+				border: "",
+				filter: { brightness: 0.75, contrast: 1.5, grayscale: 1 },
 			},
 			track: {
 				text: "text-white dark:text-white uppercase tracking-widest text-[0.9em]",

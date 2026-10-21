@@ -12,7 +12,8 @@ export const minimalTheme: ThemeConfig = {
 		},
 		card: {
 			image: {
-				border: "opacity-90 hover:opacity-100 transition-opacity",
+				border: "",
+				filter: { opacity: 0.9 },
 			},
 			title: {
 				text: "text-neutral-700 dark:text-neutral-300 font-normal",
@@ -33,7 +34,8 @@ export const minimalTheme: ThemeConfig = {
 		},
 		now_playing: {
 			image: {
-				border: "opacity-90 hover:opacity-100 transition-opacity",
+				border: "",
+				filter: { opacity: 0.9 },
 			},
 			track: {
 				text: "text-neutral-700 dark:text-neutral-300 font-normal",

@@ -1,22 +1,25 @@
 @import "tailwindcss/theme" layer(theme);
 @import "tailwindcss/utilities" layer(utilities);
 
+/*
+ * Bars use flex layout and only animate height: positioned elements and
+ * opacity animations get their own layer inside a foreignObject, which
+ * WebKit paints in the wrong place when the SVG is scaled down
+ */
 #bars {
-  @apply relative h-5 w-10;
+  @apply flex h-5 items-end gap-[2px] pb-[1px];
 }
 
 .bar {
-  @apply absolute bottom-[1px] h-[3px] w-[2px];
+  @apply h-[3px] w-[2px] flex-none;
   animation: sound 0ms -800ms linear infinite alternate;
 }
 
 @keyframes sound {
   0% {
-    opacity: 0.35;
     height: 3px;
   }
   100% {
-    opacity: 1;
     height: 12px;
   }
 }
